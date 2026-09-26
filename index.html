@@ -1,0 +1,2391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>IP-SAKTI Sahayak — SIH 2026 · PS 26045 </title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Anek+Devanagari:wght@500;600;700;800&family=Mukta:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    :root {
+      --navy: #123c7c;
+      --navy2: #0c2c5e;
+      --ink: #182b49;
+      --muted: #5a6b85;
+      --bg: #f2f5fa;
+      --card: #fff;
+      --line: #d9e1ee;
+      --line2: #edf1f8;
+      --blue: #1c4fa1;
+      --bluet: #e8eefb;
+      --saffron: #e07c1c;
+      --saffronT: #fdf1df;
+      --saffronD: #96570a;
+      --green: #177a4b;
+      --greenT: #e2f4ea;
+      --sh: 0 1px 2px rgba(15, 35, 72, .06), 0 4px 16px rgba(15, 35, 72, .05);
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      font-family: 'Mukta', 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.55
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: 'Anek Devanagari', 'Mukta', sans-serif;
+      line-height: 1.25
+    }
+
+    button {
+      font-family: inherit
+    }
+
+    .icon {
+      width: 20px;
+      height: 20px;
+      flex: none
+    }
+
+    .icon.lg {
+      width: 24px;
+      height: 24px
+    }
+
+    .icon.xl {
+      width: 30px;
+      height: 30px
+    }
+
+    /* tricolor strip */
+    .strip {
+      display: flex;
+      height: 5px
+    }
+
+    .strip span {
+      flex: 1
+    }
+
+    .strip span:nth-child(1) {
+      background: #f08a1d
+    }
+
+    .strip span:nth-child(2) {
+      background: #eef2f8;
+      border-top: 1px solid #c9d4e8
+    }
+
+    .strip span:nth-child(3) {
+      background: #1a7f4e
+    }
+
+    /* header */
+    .hdr {
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 40
+    }
+
+    .hdr-in {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 12px 20px;
+      flex-wrap: wrap
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+      margin-right: auto
+    }
+
+    .logo {
+      width: 46px;
+      height: 46px;
+      color: var(--navy);
+      flex: none
+    }
+
+    .brand-t {
+      font-size: 21px;
+      font-weight: 800;
+      color: var(--navy2);
+      letter-spacing: .2px
+    }
+
+    .brand-s {
+      font-size: 12.5px;
+      color: var(--muted);
+      font-weight: 500
+    }
+
+    .hdr-ctl {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap
+    }
+
+    .seg {
+      display: inline-flex;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      overflow: hidden;
+      background: #fff
+    }
+
+    .seg button {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 13px;
+      border: none;
+      background: none;
+      cursor: pointer;
+      font: 600 13.5px 'Anek Devanagari';
+      color: var(--muted)
+    }
+
+    .seg button.on {
+      background: var(--navy);
+      color: #fff
+    }
+
+    .seg button+button {
+      border-left: 1px solid var(--line)
+    }
+
+    .b-Pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--saffronT);
+      border: 1px solid #f2c98c;
+      color: var(--saffronD);
+      border-radius: 999px;
+      padding: 6px 13px;
+      font: 700 12.5px 'Anek Devanagari';
+      letter-spacing: .6px
+    }
+
+    /* layout */
+    .layout {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      gap: 26px;
+      padding: 24px 20px 40px;
+      align-items: flex-start
+    }
+
+    .side {
+      width: 236px;
+      flex: none;
+      position: sticky;
+      top: 86px
+    }
+
+    .view {
+      flex: 1;
+      min-width: 0
+    }
+
+    @media(max-width:980px) {
+      .layout {
+        flex-direction: column
+      }
+
+      .side {
+        width: 100%;
+        position: static
+      }
+
+      .nav {
+        display: flex !important;
+        overflow-x: auto;
+        gap: 8px;
+        padding-bottom: 6px
+      }
+
+      .nav-item {
+        flex: none
+      }
+
+      .side-card,
+      .side-ft {
+        display: none
+      }
+    }
+
+    /* sidebar */
+    .side-lbl {
+      font: 700 11.5px 'Anek Devanagari';
+      letter-spacing: 1.2px;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin: 0 0 8px 4px
+    }
+
+    .nav {
+      display: flex;
+      flex-direction: column;
+      gap: 5px
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 11px;
+      border-radius: 9px;
+      border: 1px solid transparent;
+      background: none;
+      cursor: pointer;
+      text-align: left;
+      font: 500 14.5px 'Mukta';
+      color: var(--ink);
+      width: 100%
+    }
+
+    .nav-item:hover {
+      background: #e9eef7
+    }
+
+    .nav-item.on {
+      background: #fff;
+      border-color: var(--line);
+      box-shadow: var(--sh);
+      color: var(--navy2);
+      font-weight: 700
+    }
+
+    .nav-item.on::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 3px;
+      height: 60%;
+      background: var(--saffron);
+      border-radius: 2px
+    }
+
+    .nav-item {
+      position: relative
+    }
+
+    .nstep {
+      width: 22px;
+      height: 22px;
+      flex: none;
+      border-radius: 6px;
+      background: var(--line2);
+      color: var(--muted);
+      display: grid;
+      place-items: center;
+      font: 700 11.5px 'Anek Devanagari'
+    }
+
+    .nav-item.on .nstep {
+      background: var(--navy);
+      color: #fff
+    }
+
+    .side-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px;
+      margin-top: 18px;
+      box-shadow: var(--sh)
+    }
+
+    .mini-t {
+      font: 700 13px 'Anek Devanagari';
+      display: flex;
+      justify-content: space-between;
+      align-items: center
+    }
+
+    .mini-bar {
+      height: 7px;
+      border-radius: 99px;
+      background: var(--line2);
+      margin-top: 9px;
+      overflow: hidden
+    }
+
+    .mini-fill {
+      height: 100%;
+      background: var(--blue);
+      border-radius: 99px;
+      transition: width .3s
+    }
+
+    .mini-fill.full {
+      background: var(--green)
+    }
+
+    .side-ft {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 14px;
+      padding-left: 4px
+    }
+
+    /* page head */
+    .pagehead {
+      margin-bottom: 18px
+    }
+
+    .crumb {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font: 600 12.5px 'Anek Devanagari';
+      color: var(--muted);
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 4px 12px;
+      margin-bottom: 10px
+    }
+
+    .crumb b {
+      color: var(--saffronD)
+    }
+
+    .pagehead h1 {
+      font-size: 27px;
+      color: var(--navy2)
+    }
+
+    .pagehead .sub {
+      color: var(--muted);
+      margin-top: 3px;
+      max-width: 760px
+    }
+
+    /* hero */
+    .hero {
+      background: var(--navy2);
+      color: #fff;
+      border-radius: 16px;
+      padding: 34px 32px 30px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--sh)
+    }
+
+    .hero-em {
+      position: absolute;
+      right: -30px;
+      top: -34px;
+      width: 250px;
+      height: 250px;
+      color: #fff;
+      opacity: .08;
+      pointer-events: none
+    }
+
+    .kick {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font: 700 12px 'Anek Devanagari';
+      letter-spacing: 1.1px;
+      text-transform: uppercase;
+      color: #ffcf9a;
+      border: 1px solid rgba(255, 207, 154, .4);
+      border-radius: 999px;
+      padding: 4px 12px;
+      background: rgba(255, 255, 255, .05)
+    }
+
+    .hero h1 {
+      font-size: 31px;
+      margin: 14px 0 8px;
+      max-width: 640px
+    }
+
+    .hero .hsub {
+      color: #c6d4ec;
+      max-width: 620px;
+      font-size: 16.5px
+    }
+
+    .juris-line {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-top: 14px;
+      font-size: 13.5px;
+      color: #aebfe0;
+      background: rgba(255, 255, 255, .08);
+      border: 1px solid rgba(255, 255, 255, .14);
+      border-radius: 999px;
+      padding: 4px 13px
+    }
+
+    .searchrow {
+      display: flex;
+      gap: 10px;
+      margin-top: 22px;
+      max-width: 680px;
+      position: relative;
+      z-index: 1
+    }
+
+    .hsearch {
+      flex: 1;
+      border: none;
+      border-radius: 10px;
+      padding: 14px 16px;
+      font: 500 15.5px 'Mukta';
+      color: var(--ink);
+      outline: 3px solid transparent
+    }
+
+    .hsearch:focus {
+      outline: 3px solid rgba(224, 124, 28, .55)
+    }
+
+    @media(max-width:640px) {
+      .searchrow {
+        flex-direction: column
+      }
+
+      .hero {
+        padding: 26px 22px
+      }
+    }
+
+    /* cards & grids */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 20px 22px;
+      box-shadow: var(--sh)
+    }
+
+    .card+.card {
+      margin-top: 16px
+    }
+
+    .card-t {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 17.5px;
+      color: var(--navy2);
+      margin-bottom: 10px
+    }
+
+    .card-t .icon {
+      color: var(--saffron)
+    }
+
+    .grid2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px
+    }
+
+    .grid3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 16px
+    }
+
+    @media(max-width:760px) {
+      .grid2 {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .sec-gap {
+      margin-top: 18px
+    }
+
+    /* buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 17px;
+      border-radius: 9px;
+      border: 1px solid transparent;
+      font: 600 15px 'Anek Devanagari';
+      cursor: pointer;
+      transition: .15s;
+      background: none;
+      color: var(--ink)
+    }
+
+    .btn-p {
+      background: var(--blue);
+      color: #fff
+    }
+
+    .btn-p:hover {
+      background: var(--navy)
+    }
+
+    .btn-a {
+      background: var(--saffron);
+      color: #fff
+    }
+
+    .btn-a:hover {
+      background: #c66a10
+    }
+
+    .btn-o {
+      border-color: var(--line);
+      background: #fff;
+      color: var(--blue)
+    }
+
+    .btn-o:hover {
+      border-color: var(--blue);
+      background: var(--bluet)
+    }
+
+    .btn-s {
+      color: var(--muted)
+    }
+
+    .btn-s:hover {
+      background: #e7ecf4;
+      color: var(--ink)
+    }
+
+    .btn-g {
+      background: var(--green);
+      color: #fff
+    }
+
+    .btn-g:hover {
+      background: #116040
+    }
+
+    .btn:disabled {
+      opacity: .45;
+      cursor: not-allowed
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center
+    }
+
+    /* badges & chips */
+    .b {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font: 700 11.5px 'Anek Devanagari';
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      white-space: nowrap
+    }
+
+    .b- {
+      background: var(--saffronT);
+      color: var(--saffronD);
+      border: 1px solid #f2c98c
+    }
+
+    .b-ok {
+      background: var(--greenT);
+      color: var(--green);
+      border: 1px solid #b3dcc5
+    }
+
+    .b-warn {
+      background: #fdf3e1;
+      color: #96650a;
+      border: 1px solid #ecd39d
+    }
+
+    .b-info {
+      background: var(--bluet);
+      color: var(--blue);
+      border: 1px solid #c4d4f2
+    }
+
+    .b-mut {
+      background: #eef1f6;
+      color: #5a6b85;
+      border: 1px solid #dbe1ec
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--line2);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 3px 11px;
+      font: 500 13px 'Mukta';
+      color: #3c4f70
+    }
+
+    button.chip {
+      cursor: pointer
+    }
+
+    button.chip:hover {
+      border-color: var(--blue);
+      color: var(--blue)
+    }
+
+    .chiprow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px
+    }
+
+    /* notices */
+    .notice {
+      display: flex;
+      gap: 11px;
+      align-items: flex-start;
+      border-radius: 12px;
+      padding: 13px 16px;
+      font-size: 14.5px;
+      border: 1px solid
+    }
+
+    .notice .icon {
+      margin-top: 2px;
+      color: inherit
+    }
+
+    .n-warn {
+      background: var(--saffronT);
+      border-color: #f0cc90;
+      color: #7a4a08
+    }
+
+    .n-blue {
+      background: var(--bluet);
+      border-color: #c4d4f2;
+      color: #1d3f77
+    }
+
+    .n-green {
+      background: var(--greenT);
+      border-color: #b3dcc5;
+      color: #11563a
+    }
+
+    /* quick actions */
+    .qa-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 18px;
+      cursor: pointer;
+      text-align: left;
+      box-shadow: var(--sh);
+      transition: .15s;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-family: inherit
+    }
+
+    .qa-card:hover {
+      border-color: var(--blue);
+      transform: translateY(-2px)
+    }
+
+    .qa-ic {
+      width: 42px;
+      height: 42px;
+      border-radius: 11px;
+      background: var(--bluet);
+      color: var(--blue);
+      display: grid;
+      place-items: center
+    }
+
+    .qa-card h3 {
+      font-size: 16.5px;
+      color: var(--navy2)
+    }
+
+    .qa-card p {
+      font-size: 13.5px;
+      color: var(--muted);
+      flex: 1
+    }
+
+    .qa-go {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font: 700 13px 'Anek Devanagari';
+      color: var(--saffronD)
+    }
+
+    /* stepper */
+    .stepper {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      overflow-x: auto;
+      padding: 4px 2px 10px
+    }
+
+    .st-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 999px;
+      padding: 7px 13px 7px 8px;
+      cursor: pointer;
+      font: 600 13.5px 'Anek Devanagari';
+      color: var(--ink);
+      white-space: nowrap;
+      flex: none
+    }
+
+    .st-item:hover {
+      border-color: var(--blue)
+    }
+
+    .st-item.on {
+      background: var(--navy);
+      border-color: var(--navy);
+      color: #fff
+    }
+
+    .st-item .nstep {
+      background: var(--line2);
+      color: var(--muted)
+    }
+
+    .st-item.on .nstep {
+      background: #fff;
+      color: var(--navy)
+    }
+
+    .st-sep {
+      color: #a9b7cf;
+      flex: none
+    }
+
+    /* ask page */
+    .querybox {
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      padding: 12px 14px;
+      font: 500 15.5px 'Mukta';
+      color: var(--ink);
+      width: 100%;
+      min-height: 74px;
+      resize: vertical;
+      background: #fbfcfe
+    }
+
+    .querybox:focus {
+      outline: 2px solid var(--blue);
+      background: #fff
+    }
+
+    .think {
+      display: flex;
+      flex-direction: column;
+      gap: 9px
+    }
+
+    .think div {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 15px
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--saffron);
+      flex: none;
+      animation: pulse 1s infinite
+    }
+
+    @keyframes pulse {
+      50% {
+        opacity: .25
+      }
+    }
+
+    .flow {
+      margin-top: 14px
+    }
+
+    .flow-item {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 14px;
+      position: relative;
+      padding-bottom: 20px
+    }
+
+    .flow-item:last-child {
+      padding-bottom: 0
+    }
+
+    .flow-item::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 46px;
+      bottom: 2px;
+      width: 2px;
+      background: var(--line)
+    }
+
+    .flow-item:last-child::before {
+      display: none
+    }
+
+    .fnode {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font: 700 16px 'Anek Devanagari';
+      box-shadow: var(--sh)
+    }
+
+    .fnode.alt {
+      background: #fff;
+      color: var(--navy);
+      border: 2px solid var(--navy)
+    }
+
+    .ans-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 4px
+    }
+
+    .ans-head h2 {
+      font-size: 21px;
+      color: var(--navy2);
+      margin-right: auto
+    }
+
+    .qlist {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px
+    }
+
+    .qlist li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start
+    }
+
+    .qnum {
+      width: 26px;
+      height: 26px;
+      flex: none;
+      border-radius: 8px;
+      background: var(--bluet);
+      color: var(--blue);
+      display: grid;
+      place-items: center;
+      font: 700 13px 'Anek Devanagari';
+      margin-top: 1px
+    }
+
+    .qlist .lnk {
+      background: none;
+      border: none;
+      color: var(--blue);
+      font: 600 14.5px 'Mukta';
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      padding: 0
+    }
+
+    .qlist .lnk:hover {
+      color: var(--navy2)
+    }
+
+    /* wizard */
+    .wiz-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 12px
+    }
+
+    .wiz-q {
+      font-size: 19px;
+      font-weight: 600;
+      color: var(--navy2);
+      margin: 8px 0 16px
+    }
+
+    .opt {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      text-align: left;
+      background: #fff;
+      border: 1.5px solid var(--line);
+      border-radius: 11px;
+      padding: 13px 16px;
+      cursor: pointer;
+      font: 500 15.5px 'Mukta';
+      transition: .12s;
+      margin-bottom: 9px
+    }
+
+    .opt:hover {
+      border-color: var(--blue);
+      background: var(--bluet)
+    }
+
+    .opt .optmark {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid #b8c5dc;
+      flex: none
+    }
+
+    .opt.yn {
+      max-width: 380px;
+      font-size: 16.5px;
+      font-weight: 600
+    }
+
+    .opt.yn .optmark {
+      border-radius: 6px
+    }
+
+    .prog {
+      height: 8px;
+      border-radius: 99px;
+      background: var(--line2);
+      overflow: hidden;
+      flex: 1;
+      min-width: 160px
+    }
+
+    .prog-fill {
+      height: 100%;
+      background: var(--blue);
+      border-radius: 99px;
+      transition: width .25s
+    }
+
+    .res-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      background: var(--bluet);
+      border: 1.5px solid #c4d4f2;
+      color: var(--navy2);
+      border-radius: 12px;
+      padding: 12px 18px;
+      font: 800 21px 'Anek Devanagari'
+    }
+
+    .kv {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 8px 14px;
+      font-size: 14.5px
+    }
+
+    .kv dt {
+      color: var(--muted);
+      font-weight: 600
+    }
+
+    @media(max-width:560px) {
+      .kv {
+        grid-template-columns: 1fr
+      }
+    }
+
+    /* pathway */
+    .pwgrid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-bottom: 16px
+    }
+
+    .pw-card {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1.5px solid var(--line);
+      background: #fff;
+      border-radius: 999px;
+      padding: 8px 15px;
+      cursor: pointer;
+      font: 600 14px 'Anek Devanagari';
+      color: var(--ink)
+    }
+
+    .pw-card:hover {
+      border-color: var(--blue)
+    }
+
+    .pw-card.on {
+      background: var(--navy);
+      border-color: var(--navy);
+      color: #fff
+    }
+
+    .pw-nav {
+      display: flex;
+      gap: 9px;
+      align-items: center;
+      margin-top: 16px;
+      flex-wrap: wrap
+    }
+
+    .pw-count {
+      font: 600 13px 'Anek Devanagari';
+      color: var(--muted);
+      margin-left: auto
+    }
+
+    /* prior art */
+    .pa-tools {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 14px
+    }
+
+    .inp {
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      padding: 10px 13px;
+      font: 500 15px 'Mukta';
+      background: #fff;
+      color: var(--ink);
+      width: 100%
+    }
+
+    .inp:focus {
+      outline: 2px solid var(--blue)
+    }
+
+    .pa-search {
+      position: relative;
+      flex: 1;
+      min-width: 220px
+    }
+
+    .pa-search .icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted)
+    }
+
+    .pa-search .inp {
+      padding-left: 40px
+    }
+
+    .pa-card {
+      position: relative;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      padding: 18px;
+      cursor: pointer;
+      box-shadow: var(--sh);
+      transition: .15s;
+      text-align: left;
+      font-family: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 9px
+    }
+
+    .pa-card:hover {
+      border-color: var(--blue);
+      transform: translateY(-2px)
+    }
+
+    .pa-tag {
+      position: absolute;
+      top: 12px;
+      right: 12px
+    }
+
+    .pa-card h3 {
+      font-size: 15.5px;
+      color: var(--navy2);
+      padding-right: 96px;
+      line-height: 1.35
+    }
+
+    .pa-card p {
+      font-size: 13.5px;
+      color: var(--muted)
+    }
+
+    .pa-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+      margin-top: auto
+    }
+
+    .pa-id {
+      font: 600 12px 'Mukta';
+      color: #8b98af
+    }
+
+    /* compliance */
+    .ck-row {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 14px 6px;
+      border-bottom: 1px solid var(--line2);
+      cursor: pointer;
+      border-radius: 8px
+    }
+
+    .ck-row:hover {
+      background: #f7f9fd
+    }
+
+    .ck-row:last-child {
+      border-bottom: none
+    }
+
+    .ckbox {
+      width: 24px;
+      height: 24px;
+      flex: none;
+      border-radius: 7px;
+      border: 2px solid #b8c5dc;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      margin-top: 2px
+    }
+
+    .ck-row.done .ckbox {
+      background: var(--green);
+      border-color: var(--green)
+    }
+
+    .ck-row h4 {
+      font-size: 15.5px;
+      color: var(--navy2)
+    }
+
+    .ck-row p {
+      font-size: 13.5px;
+      color: var(--muted)
+    }
+
+    .ck-row.done h4 {
+      color: var(--green)
+    }
+
+    .ring {
+      position: relative;
+      width: 96px;
+      height: 96px;
+      flex: none
+    }
+
+    .ring svg {
+      transform: rotate(-90deg)
+    }
+
+    .ring b {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font: 800 21px 'Anek Devanagari';
+      color: var(--navy2)
+    }
+
+    /* sources */
+    .src-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 19px;
+      box-shadow: var(--sh);
+      display: flex;
+      flex-direction: column;
+      gap: 9px
+    }
+
+    .src-top {
+      display: flex;
+      align-items: center;
+      gap: 11px
+    }
+
+    .src-ic {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      flex: none
+    }
+
+    .src-ic.nat {
+      background: var(--bluet);
+      color: var(--blue)
+    }
+
+    .src-ic.intl {
+      background: var(--saffronT);
+      color: var(--saffronD)
+    }
+
+    .src-card h3 {
+      font-size: 16px;
+      color: var(--navy2)
+    }
+
+    .src-card p {
+      font-size: 13.5px;
+      color: var(--muted);
+      flex: 1
+    }
+
+    /* facilitator */
+    .field {
+      margin-bottom: 14px
+    }
+
+    .lbl {
+      display: block;
+      font: 600 13.5px 'Anek Devanagari';
+      color: var(--navy2);
+      margin-bottom: 5px
+    }
+
+    .txa {
+      min-height: 96px;
+      resize: vertical
+    }
+
+    .hf-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 13px 6px;
+      border-bottom: 1px solid var(--line2)
+    }
+
+    .hf-item:last-child {
+      border-bottom: none
+    }
+
+    .hf-item h4 {
+      font-size: 15px;
+      color: var(--navy2)
+    }
+
+    .hf-item p {
+      font-size: 13.5px;
+      color: var(--muted)
+    }
+
+    .hf-sub {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+      margin-top: 4px
+    }
+
+    /* modal */
+    .modal-ov {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 22, 45, .55);
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      z-index: 100
+    }
+
+    .modal {
+      background: #fff;
+      border-radius: 16px;
+      max-width: 600px;
+      width: 100%;
+      max-height: 88vh;
+      overflow: auto;
+      box-shadow: 0 20px 60px rgba(10, 22, 45, .35);
+      animation: mup .18s ease
+    }
+
+    @keyframes mup {
+      from {
+        transform: translateY(14px);
+        opacity: 0
+      }
+    }
+
+    .modal-h {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 17px 22px;
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      background: #fff;
+      border-radius: 16px 16px 0 0
+    }
+
+    .modal-h h3 {
+      font-size: 18px;
+      color: var(--navy2);
+      margin-right: auto
+    }
+
+    .modal-b {
+      padding: 20px 22px
+    }
+
+    .modal-f {
+      padding: 15px 22px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+      flex-wrap: wrap
+    }
+
+    /* toast */
+    #toast-root {
+      position: fixed;
+      bottom: 22px;
+      right: 22px;
+      z-index: 200;
+      display: flex;
+      flex-direction: column;
+      gap: 10px
+    }
+
+    .toast {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--navy2);
+      color: #fff;
+      padding: 12px 18px;
+      border-radius: 11px;
+      box-shadow: 0 10px 30px rgba(10, 22, 45, .35);
+      font: 500 14.5px 'Mukta';
+      max-width: 360px;
+      animation: tin .2s ease
+    }
+
+    @keyframes tin {
+      from {
+        transform: translateY(10px);
+        opacity: 0
+      }
+    }
+
+    .toast .icon {
+      color: #ffc98f
+    }
+
+    /* footer */
+    .ftr {
+      border-top: 1px solid var(--line);
+      background: #fff;
+      margin-top: 20px
+    }
+
+    .ftr-in {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 18px 20px;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 13px
+    }
+
+    .ftr-in .logo {
+      width: 30px;
+      height: 30px
+    }
+
+    :focus-visible {
+      outline: 2.5px solid var(--saffron);
+      outline-offset: 2px;
+      border-radius: 6px
+    }
+  </style>
+</head>
+
+<body>
+  <div class="strip"><span></span><span></span><span></span></div>
+  <header class="hdr">
+    <div class="hdr-in" id="hdr"></div>
+  </header>
+  <div class="layout">
+    <aside class="side" id="side"></aside>
+    <main class="view" id="view"></main>
+  </div>
+  <footer class="ftr">
+    <div class="ftr-in" id="ftr"></div>
+  </footer>
+  <div id="modal-root"></div>
+  <div id="toast-root"></div>
+
+  <script>
+    /* ============ helpers ============ */
+    const $ = s => document.querySelector(s);
+    const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    const store = (k, d) => { try { const v = localStorage.getItem('ipsakti_' + k); return v ? JSON.parse(v) : d } catch (e) { return d } };
+    const save = (k, v) => { try { localStorage.setItem('ipsakti_' + k, JSON.stringify(v)) } catch (e) { } };
+
+    /* ============ icons ============ */
+    const IC = {
+      home: '<path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h5v-6h4v6h5V9.5"/>',
+      spark: '<path d="M12 3l1.9 5.3L19 10l-5.1 1.7L12 17l-1.9-5.3L5 10l5.1-1.7z"/><path d="M18.5 15.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z"/>',
+      grid: '<rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/>',
+      route: '<circle cx="6" cy="19" r="2.6"/><circle cx="18" cy="5" r="2.6"/><path d="M8.6 19H14a3.5 3.5 0 0 0 0-7h-4a3.5 3.5 0 0 1 0-7h1.4"/>',
+      search: '<circle cx="11" cy="11" r="7"/><path d="m21 21-4.7-4.7"/>',
+      clip: '<rect x="5" y="4.5" width="14" height="16.5" rx="2"/><rect x="9" y="2.5" width="6" height="4" rx="1"/><path d="m9 13.5 2 2 4-4.5"/>',
+      book: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M20 17v4H6.5A2.5 2.5 0 0 1 4 18.5"/>',
+      user: '<circle cx="12" cy="8" r="4"/><path d="M4.5 21c.7-3.6 3.7-5.5 7.5-5.5s6.8 1.9 7.5 5.5"/>',
+      check: '<path d="m5 13 4 4L19 7"/>',
+      checkc: '<circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 5-5.5"/>',
+      info: '<circle cx="12" cy="12" r="9"/><path d="M12 8h.01"/><path d="M12 11.5V16"/>',
+      alert: '<path d="M12 3.5 21.5 20h-19z"/><path d="M12 10v4"/><path d="M12 17h.01"/>',
+      arr: '<path d="M5 12h13"/><path d="m13 6 6 6-6 6"/>',
+      chev: '<path d="m9.5 6 6 6-6 6"/>',
+      globe: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.8 3.4 2.8 14.6 0 18"/><path d="M12 3c-2.8 3.4-2.8 14.6 0 18"/>',
+      x: '<path d="M6 6l12 12M18 6 6 18"/>',
+      leaf: '<path d="M5 20C5 10.5 11.5 4.5 20 4c.5 8.5-5.5 15-15 16z"/><path d="M5 20c3.5-5.5 7.5-9.5 12-12.5"/>',
+      send: '<path d="M21.5 2.5 11 13"/><path d="M21.5 2.5 15 21l-4-8-8-4z"/>',
+      ext: '<path d="M14 4h6v6"/><path d="M20 4 11 13"/><path d="M19 14v5a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 5 19V8a1.5 1.5 0 0 1 1.5-1.5H11"/>',
+      flag: '<path d="M5 21V4"/><path d="M5 4.8c4.5-2 8.5 2 14 0V14c-5.5 2-9.5-2-14 0"/>',
+      scale: '<path d="M12 3.5V21"/><path d="M8 21h8"/><path d="M6 7h12"/><path d="m6 7-2.8 6a3.1 3.1 0 0 0 5.6 0z"/><path d="m18 7-2.8 6a3.1 3.1 0 0 0 5.6 0z"/>',
+      doc: '<path d="M14 2.5H7A1.5 1.5 0 0 0 5.5 4v16A1.5 1.5 0 0 0 7 21.5h10a1.5 1.5 0 0 0 1.5-1.5V7z"/><path d="M14 2.5V7h4.5"/>',
+      eyeoff: '<path d="M2.5 12S6 5.8 12 5.8 21.5 12 21.5 12 18 18.2 12 18.2 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="2.8"/><path d="M4 20 20 4"/>',
+      award: '<circle cx="12" cy="9" r="5.5"/><path d="m8.8 13.5-1.6 7 4.8-2.8 4.8 2.8-1.6-7"/>',
+      pen: '<path d="M17 3.5a2.6 2.6 0 0 1 3.7 3.7L8 20l-4.5 1L4.5 16.5z"/>',
+      copyc: '<circle cx="12" cy="12" r="9"/><path d="M15 9.8a3.8 3.8 0 1 0 0 4.4"/>',
+      plant: '<path d="M12 21v-8"/><path d="M12 13C12 8 8.5 5.5 4 5.5c0 4.5 3 7.5 8 7.5z"/><path d="M12 10.5c0-4 3-6.5 8-6.5 0 4.5-3 6.5-8 6.5z"/>',
+      refresh: '<path d="M20.5 12a8.5 8.5 0 1 1-2.5-6"/><path d="M20.5 3.5V8H16"/>',
+      tag: '<path d="M20.5 13.5 13.5 20.5a1.7 1.7 0 0 1-2.4 0L3.5 12.9V3.5h9.4l7.6 7.6a1.7 1.7 0 0 1 0 2.4z"/><circle cx="8" cy="8" r="1.4"/>'
+    };
+    const ic = (n, c = '') => `<svg class="icon ${c}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[n] || ''}</svg>`;
+    const EMBLEM = `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="24" cy="24" r="21" stroke-width="2.6"/><circle cx="24" cy="24" r="4" fill="currentColor" stroke="none"/><g stroke-width="2.2" stroke-linecap="round"><line x1="24" y1="5.5" x2="24" y2="17"/><line x1="24" y1="31" x2="24" y2="42.5"/><line x1="5.5" y1="24" x2="17" y2="24"/><line x1="31" y1="24" x2="42.5" y2="24"/><line x1="10.9" y1="10.9" x2="19.1" y2="19.1"/><line x1="28.9" y1="28.9" x2="37.1" y2="37.1"/><line x1="10.9" y1="37.1" x2="19.1" y2="28.9"/><line x1="28.9" y1="19.1" x2="37.1" y2="10.9"/></g></svg>`;
+
+    /* ============ i18n ============ */
+    const SAMPLE_Q = { en: 'I developed a new Ayurvedic herbal formulation. Can I patent it in India?', hi: 'मैंने एक नया आयुर्वेदिक हर्बल फॉर्मूलेशन विकसित किया है। क्या मैं इसे भारत में पेटेंट कर सकता हूँ?' };
+    const I18N = {
+      en: {
+        app_sub: 'SIH 2026 · PS 26045 · Ayurveda IP &amp; TK Assistant', mode: 'DEMO MODE', india: 'India', intl: 'International',
+        nav_dash: 'Dashboard', nav_ask: 'Ask Sahayak', nav_class: 'Product Classification', nav_ip: 'IP Pathway', nav_pa: 'Prior Art / TK', nav_comp: 'Compliance', nav_src: 'Sources', nav_hf: 'Human Facilitator',
+        side_flow: 'Workflow', side_prog: 'Compliance progress', side_reset: 'Reset  data', side_v: ' v1.0 · local data only · no live APIs',
+        dash_kick: 'Smart India Hackathon 2026 · Problem Statement 26045',
+        dash_h1: 'Ask Sahayak — your Ayurveda IP &amp; Traditional Knowledge guide',
+        dash_sub: 'Structured, demo guidance on IP rights, regulatory routes, Traditional Knowledge and Biodiversity / ABS for Ayurveda innovations.',
+        search_lbl: 'Ask Sahayak', btn_ask: 'Get  Answer',
+        ph1: 'I developed a new Ayurvedic herbal formulation. Can I patent it in India?',
+        ph2: 'How do I protect my Ayurvedic brand name?',
+        ph3: 'Do I need NBA approval for using a forest herb?',
+        quick_lbl: 'Quick Actions',
+        qa1_t: 'Product Classification', qa1_d: 'Find the right regulatory category for your product.',
+        qa2_t: 'IP Pathway', qa2_d: 'Compare protection routes and when they apply.',
+        qa3_t: 'Prior Art / TK', qa3_d: 'Sample  search with evidence cards.',
+        qa4_t: 'Compliance', qa4_d: '6-point readiness checklist with progress.',
+        go: 'Open', flow_lbl: 'Main  Flow', stepof: 'Step {n} of 8',
+        demo_notice: 'This is a demonstration prototype for SIH judges. All results use local  data — no live APIs, no LLM calls, and no real legal determinations.',
+        cov_t: 'What Sahayak covers', cov1: 'IP rights for Ayurveda innovations', cov2: 'Traditional Knowledge checks', cov3: 'Regulatory guidance (AYUSH · CDSCO · FSSAI)', cov4: 'Biodiversity / ABS support',
+        ask_h1: 'Ask Sahayak', ask_sub: ' structured answer for the sample query. You can edit the query — the prototype responds with curated  data.',
+        q_lbl: 'Your query (edit if needed)', run: 'Get  Answer', reset: 'Reset',
+        demo_hint: ' mode: this prototype responds with curated  data built around the sample query.',
+        think1: 'Understanding the query…', think2: 'Mapping IP pathway…', think3: 'Checking regulatory, TK &amp; ABS layers…',
+        ans_t: ' Answer', conf: 'Confidence', conf_v: 'Medium', conf_note: 'Medium — key facts (novelty evidence, ABS scope) remain unverified in this demo.',
+        s_qu: 'Query Understanding', s_ip: 'IP Pathway', s_reg: 'Regulatory Consideration', s_tk: 'Traditional Knowledge', s_abs: 'Biodiversity / ABS', s_next: 'Next Steps', s_src: 'Sources',
+        src_ref: 'Referenced in this  answer', view_src: 'View all sources', ns_open: 'Open', ns_help: 'Professional help',
+        class_h1: 'Product Classification', class_sub: 'Answer six short questions to see the likely regulatory category ( logic, local data).',
+        q_of: 'Question {n} of {m}', opt_y: 'Yes', opt_n: 'No', back: 'Back', restart: 'Start over', res_t: 'Result',
+        route_lbl: 'Regulatory route ', ip_hint: 'IP hint', abs_warn: 'ABS may apply — NBA / SBB intimation or approval ', tk_warn: 'TK overlap — check TKDL &amp; patentability exclusions ', no_bio: 'No biological resources — ABS generally not applicable ',
+        act_ip: 'View IP Pathway', act_pa: 'Search Prior Art / TK', act_comp: 'Open Compliance',
+        c_q1: 'Is the product based on a formulation from classical Ayurvedic texts (e.g., listed in the Ayurvedic Formulary of India)?',
+        c_q2: 'Have you created a new or modified formulation (changed ingredients, proportions or process)?',
+        c_q3: 'Are biological resources used (plants, animals, micro-organisms or derived materials)?',
+        c_q4: 'Is Traditional Knowledge (classical or community) involved in the formulation?',
+        c_q5: 'What is the intended product category?',
+        c_q5o1: 'Ayurvedic Medicine (ASU)', c_q5o2: 'Phytopharmaceutical (standardised plant extract)', c_q5o3: 'New Drug (other)', c_q5o4: 'Food / Nutraceutical', c_q5o5: 'Cosmetic',
+        c_q6: 'Target jurisdiction?',
+        ip_h1: 'IP Pathway', ip_sub: 'What each protection route covers and when it may apply in the Ayurveda context ( guidance).',
+        pw_protects: 'What it protects', pw_when: 'When it may apply', pw_auth: 'Key authority ( ref)', pw_watch: 'Watch-outs', pw_term: 'Typical term ',
+        pw_demo: 'Guidance — verify with official sources before any real filing.', pw_prev: 'Previous', pw_next: 'Next', route_n: 'Route {n} of {m}',
+        pa_h1: 'Prior Art / TK Search', pa_sub: ' search over sample evidence records. Clearly labelled  data only.',
+        pa_search_ph: 'Search  records — e.g., herbal, joint care, classical…', pa_disc: 'Informational search only — not a patentability or legal determination.',
+        pa_all: 'All', pa_count: '{n} record(s)', pa_rel_h: 'High relevance', pa_rel_m: 'Medium relevance', pa_none: 'No  records match your search.', pa_clear: 'Clear search',
+        m_why: 'Why it matters ', m_note: ' Entry for UI demonstration only. Official source link to be connected.', m_close: 'Close',
+        ty_classical: 'Classical Text', ty_patent: 'Patent ', ty_tkdl: 'TKDL', ty_journal: 'Journal ', ty_formulary: 'Formulary ',
+        comp_h1: 'Compliance Checklist', comp_sub: 'Six readiness checks before routing a case for human review.',
+        ck1: 'IP pathway reviewed', cd1: 'Select and confirm the relevant IP route (patent, trademark, etc.).',
+        ck2: 'Traditional Knowledge checked', cd2: 'Verify classical / community TK overlap; note TKDL considerations.',
+        ck3: 'Biodiversity / ABS reviewed', cd3: 'Map biological resources; check NBA / SBB intimation or approval needs.',
+        ck4: 'Product classification checked', cd4: 'Run the Product Classification wizard and record the result.',
+        ck5: 'Regulatory requirements reviewed', cd5: 'Confirm AYUSH / CDSCO / FSSAI licensing or approvals, as applicable.',
+        ck6: 'International requirements reviewed', cd6: 'For exports / filings: target-country rules, PCT and Nagoya considerations.',
+        comp_x6: '{n} of 6 complete', status_pending: 'Pending', status_ready: 'Ready for review', comp_reset: 'Reset checklist',
+        comp_review: 'Human Facilitator Review', comp_done_t: 'All checks complete ', comp_done_d: 'Route this case to the Human Facilitator for verification.',
+        comp_save: 'Progress is saved in this browser only (local  data).', pending_n: '{n} compliance item(s) still pending.',
+        src_h1: 'Sources', src_sub: 'Reference organisations for IP, AYUSH, TK and Biodiversity. No external links are embedded .',
+        src_note_t: ' Mode — no external links are embedded. Official URLs will be connected in production.',
+        src_btn: 'Official source link to be connected', nat: 'National', intl_b: 'International',
+        src_toast: 'Mode — official links will be connected in production.',
+        hf_h1: 'Human Facilitator', hf_sub: 'Route demo outputs to a domain expert for verification before any real decision.',
+        hf_role_t: 'Why a Human Facilitator?', hf_role_d: 'Sahayak outputs are  guidance, not legal advice. A domain expert (patent agent, AYUSH expert or biodiversity officer) should verify every output before any real filing, licence or commercialisation step.',
+        f_name: 'Name', f_name_ph: 'Your name', f_query: 'Query', f_cat: 'Category', f_submit: 'Submit for Review',
+        hf_list: 'Submitted requests ', hf_none: 'No requests submitted yet. Use the form above.', hf_status: 'Submitted ',
+        hf_ok: 'Submitted for review .', hf_err: 'Please fill Name and Query.', hf_clear: 'Clear list',
+        hf_pending: 'Pending checks', hf_pending_note: 'Note: {n} compliance item(s) are still pending.', hf_all_ok: 'All 6 compliance checks are complete .',
+        cancel: 'Cancel', confirm_reset_t: 'Reset  data?', confirm_reset_d: 'This clears local progress: checklist, submissions and classification results.', confirm: 'Yes, reset', reset_ok: 'Data reset.',
+        ftr_txt: 'IP-SAKTI Sahayak — SIH 2026  prototype. All data is local  data; no live AI, APIs or legal determinations.', ftr_built: 'Built for Smart India Hackathon 2026 · PS 26045',
+        cat_other: 'Other'
+      },
+      hi: {
+        app_sub: 'एसआईएच 2026 · पीएस 26045 · आयुर्वेद IP एवं पारंपरिक ज्ञान सहायक', demo_mode: 'डेमो मोड', india: 'भारत', intl: 'अंतर्राष्ट्रीय',
+        nav_dash: 'डैशबोर्ड', nav_ask: 'सहायक से पूछें', nav_class: 'उत्पाद वर्गीकरण', nav_ip: 'IP मार्ग', nav_pa: 'पूर्व-कला / पा.ज्ञान', nav_comp: 'अनुपालन', nav_src: 'स्रोत', nav_hf: 'मानव सुविधाकर्ता',
+        side_flow: 'कार्यप्रवाह', side_prog: 'अनुपालन प्रगति', side_reset: 'डेमो डेटा रीसेट करें', side_v: 'डेमो v1.0 · केवल लोकल डेटा · कोई लाइव API नहीं',
+        dash_kick: 'स्मार्ट इंडिया हैकाथन 2026 · समस्या विवरण 26045',
+        dash_h1: 'सहायक से पूछें — आपका आयुर्वेद IP एवं पारंपरिक ज्ञान मार्गदर्शक',
+        dash_sub: 'आयुर्वेद नवाचारों हेतु IP अधिकारों, नियामक मार्गों, पारंपरिक ज्ञान तथा जैव विविधता / ABS पर संरचित डेमो मार्गदर्शन।',
+        search_lbl: 'सहायक से पूछें', btn_ask: 'डेमो उत्तर पाएँ',
+        ph1: 'मैंने एक नया आयुर्वेदिक हर्बल फॉर्मूलेशन विकसित किया है। क्या मैं इसे भारत में पेटेंट कर सकता हूँ?',
+        ph2: 'मैं अपने आयुर्वेदिक ब्रांड नाम की सुरक्षा कैसे करूँ?',
+        ph3: 'वन जड़ी-बूटी के उपयोग हेतु NBA अनुमोदन चाहिए?',
+        quick_lbl: 'त्वरित कार्रवाइयाँ',
+        qa1_t: 'उत्पाद वर्गीकरण', qa1_d: 'अपने उत्पाद की सही नियामक श्रेणी जानें।',
+        qa2_t: 'IP मार्ग', qa2_d: 'सुरक्षा मार्गों और उनकी उपयोगिता की तुलना करें।',
+        qa3_t: 'पूर्व-कला / पा.ज्ञान', qa3_d: 'साक्ष्य कार्डों के साथ नमूना डेमो खोज।',
+        qa4_t: 'अनुपालन', qa4_d: 'प्रगति सहित 6-बिंदु तैयारी चेकलिस्ट।',
+        go: 'खोलें', flow_lbl: 'मुख्य डेमो प्रवाह', stepof: 'चरण {n}/8',
+        demo_notice: 'यह एसआईएच ज्यूरी हेतु एक डेमो प्रोटोटाइप है। सभी परिणाम लोकल डेमो डेटा पर आधारित हैं — कोई लाइव API, कोई LLM कॉल, और कोई वास्तविक कानूनी निर्धारण नहीं।',
+        cov_t: 'सहायक क्या कवर करता है', cov1: 'आयुर्वेद नवाचारों हेतु IP अधिकार', cov2: 'पारंपरिक ज्ञान जाँच', cov3: 'नियामक मार्गदर्शन (आयुष · CDSCO · FSSAI)', cov4: 'जैव विविधता / ABS सहायता',
+        ask_h1: 'सहायक से पूछें', ask_sub: 'नमूना प्रश्न हेतु संरचित डेमो उत्तर। आप प्रश्न संपादित कर सकते हैं — प्रोटोटाइप क्यूरेटेड डेमो डेटा से उत्तर देता है।',
+        q_lbl: 'आपका प्रश्न (आवश्यकता हो तो संपादित करें)', run: 'डेमो उत्तर पाएँ', reset: 'रीसेट',
+        demo_hint: 'डेमो मोड: यह प्रोटोटाइप नमूना प्रश्न पर आधारित क्यूरेटेड डेमो डेटा से उत्तर देता है।',
+        think1: 'प्रश्न समझा जा रहा है…', think2: 'IP मार्ग मैप किया जा रहा है…', think3: 'नियामक, पा.ज्ञान व ABS परतें जाँची जा रही हैं…',
+        ans_t: 'डेमो उत्तर', conf: 'विश्वसनीयता', conf_v: 'मध्यम', conf_note: 'मध्यम — प्रमुख तथ्य (नवीनता साक्ष्य, ABS क्षेत्र) इस डेमो में असत्यापित हैं।',
+        s_qu: 'प्रश्न की समझ', s_ip: 'IP मार्ग', s_reg: 'नियामक पहलू', s_tk: 'पारंपरिक ज्ञान', s_abs: 'जैव विविधता / ABS', s_next: 'अगले कदम', s_src: 'स्रोत',
+        src_ref: 'इस डेमो उत्तर में संदर्भित', view_src: 'सभी स्रोत देखें', ns_open: 'खोलें', ns_help: 'विशेषज्ञ सहायता',
+        class_h1: 'उत्पाद वर्गीकरण', class_sub: 'छह छोटे प्रश्नों के उत्तर दें और संभावित नियामक श्रेणी देखें (डेमो लॉजिक, लोकल डेटा)।',
+        q_of: 'प्रश्न {n}/{m}', opt_y: 'हाँ', opt_n: 'नहीं', back: 'पीछे', restart: 'फिर से शुरू करें', res_t: 'डेमो परिणाम',
+        route_lbl: 'नियामक मार्ग (डेमो)', ip_hint: 'IP संकेत', abs_warn: 'ABS लागू हो सकता है — NBA / SBB सूचना या अनुमोदन (डेमो)', tk_warn: 'पा.ज्ञान ओवरलैप — TKDL व पेटेंट-योग्यता अपवाद जाँचें (डेमो)', no_bio: 'कोई जैविक संसाधन नहीं — ABS सामान्यतः लागू नहीं (डेमो)',
+        act_ip: 'IP मार्ग देखें', act_pa: 'पूर्व-कला / पा.ज्ञान खोजें', act_comp: 'अनुपालन खोलें',
+        c_q1: 'क्या उत्पाद शास्त्रीय आयुर्वेदिक ग्रंथों पर आधारित है (जैसे आयुर्वेदिक फॉर्म्युलरी ऑफ इंडिया में सूचीबद्ध)?',
+        c_q2: 'क्या आपने नया या संशोधित फॉर्मूलेशन बनाया है (सामग्री, अनुपात या प्रक्रिया में परिवर्तन)?',
+        c_q3: 'क्या जैविक संसाधनों का उपयोग होता है (पौधे, पशु, सूक्ष्मजीव या व्युत्पन्न सामग्री)?',
+        c_q4: 'क्या फॉर्मूलेशन में पारंपरिक ज्ञान (शास्त्रीय या सामुदायिक) शामिल है?',
+        c_q5: 'अपेक्षित उत्पाद श्रेणी क्या है?',
+        c_q5o1: 'आयुर्वेदिक औषधि (ASU)', c_q5o2: 'फाइटोफार्मास्युटिकल (मानकीकृत पादप अर्क)', c_q5o3: 'नई औषधि (अन्य)', c_q5o4: 'आहार / न्यूट्रास्युटिकल', c_q5o5: 'कॉस्मेटिक',
+        c_q6: 'लक्षित क्षेत्राधिकार?',
+        ip_h1: 'IP मार्ग', ip_sub: 'प्रत्येक सुरक्षा मार्ग क्या कवर करता है और आयुर्वेद संदर्भ में कब लागू हो सकता है (डेमो मार्गदर्शन)।',
+        pw_protects: 'यह क्या सुरक्षित करता है', pw_when: 'कब लागू हो सकता है', pw_auth: 'प्रमुख प्राधिकरण (डेमो संदर्भ)', pw_watch: 'सावधानियाँ', pw_term: 'सामान्य अवधि (डेमो)',
+        pw_demo: 'डेमो मार्गदर्शन — किसी भी वास्तविक फाइलिंग से पहले आधिकारिक स्रोतों से सत्यापित करें।', pw_prev: 'पिछला', pw_next: 'अगला', route_n: 'मार्ग {n}/{m}',
+        pa_h1: 'पूर्व-कला / पारंपरिक ज्ञान खोज', pa_sub: 'नमूना साक्ष्य अभिलेखों पर डेमो खोज। केवल स्पष्ट रूप से चिह्नित डेमो डेटा।',
+        pa_search_ph: 'डेमो अभिलेख खोजें — जैसे हर्बल, जोड़ की देखभाल, शास्त्रीय…', pa_disc: 'केवल सूचनात्मक खोज — पेटेंट-योग्यता या कानूनी निर्धारण नहीं।',
+        pa_all: 'सभी', pa_count: '{n} डेमो अभिलेख', pa_rel_h: 'उच्च प्रासंगिकता', pa_rel_m: 'मध्यम प्रासंगिकता', pa_none: 'कोई डेमो अभिलेख खोज से मेल नहीं खाता।', pa_clear: 'खोज साफ़ करें',
+        m_why: 'क्यों महत्वपूर्ण (डेमो)', m_note: 'केवल UI प्रदर्शन हेतु डेमो प्रविष्टि। आधिकारिक स्रोत लिंक जोड़ा जाएगा।', m_close: 'बंद करें',
+        ty_classical: 'शास्त्रीय ग्रंथ', ty_patent: 'पेटेंट (डेमो)', ty_tkdl: 'TKDL (डेमो)', ty_journal: 'जर्नल (डेमो)', ty_formulary: 'फॉर्म्युलरी (डेमो)',
+        comp_h1: 'अनुपालन चेकलिस्ट', comp_sub: 'मानव समीक्षा हेतु भेजने से पहले छह तैयारी जाँचें।',
+        ck1: 'IP मार्ग की समीक्षा', cd1: 'प्रासंगिक IP मार्ग (पेटेंट, ट्रेडमार्क आदि) चुनें और पुष्टि करें।',
+        ck2: 'पारंपरिक ज्ञान जाँच', cd2: 'शास्त्रीय / सामुदायिक पा.ज्ञान ओवरलैप जाँचें; TKDL विचार नोट करें।',
+        ck3: 'जैव विविधता / ABS समीक्षा', cd3: 'जैविक संसाधनों की मैपिंग करें; NBA / SBB सूचना या अनुमोदन आवश्यकता देखें।',
+        ck4: 'उत्पाद वर्गीकरण जाँच', cd4: 'उत्पाद वर्गीकरण विज़ार्ड चलाएँ और परिणाम दर्ज करें।',
+        ck5: 'नियामक आवश्यकताओं की समीक्षा', cd5: 'लागू हो तो आयुष / CDSCO / FSSAI लाइसेंसिंग या अनुमोदन की पुष्टि करें।',
+        ck6: 'अंतर्राष्ट्रीय आवश्यकताओं की समीक्षा', cd6: 'निर्यात / फाइलिंग हेतु: लक्षित देश के नियम, PCT व नागोया विचार।',
+        comp_x6: '{n}/6 पूर्ण', status_pending: 'शेष', status_ready: 'समीक्षा हेतु तैयार', comp_reset: 'चेकलिस्ट रीसेट करें',
+        comp_review: 'मानव सुविधाकर्ता समीक्षा', comp_done_t: 'सभी जाँचें पूर्ण (डेमो)', comp_done_d: 'इस केस को सत्यापन हेतु मानव सुविधाकर्ता को भेजें।',
+        comp_save: 'प्रगति केवल इस ब्राउज़र में सहेजी जाती है (लोकल डेमो डेटा)।', pending_n: '{n} अनुपालन मद अभी शेष हैं।',
+        src_h1: 'स्रोत', src_sub: 'IP, आयुष, पारंपरिक ज्ञान व जैव विविधता हेतु संदर्भ संगठन। इस डेमो में कोई बाहरी लिंक जोड़ा नहीं गया है।',
+        src_note_t: 'डेमो मोड — कोई बाहरी लिंक जोड़ा नहीं गया है। आधिकारिक लिंक प्रोडक्शन में जोड़े जाएँगे।',
+        src_btn: 'आधिकारिक स्रोत लिंक जोड़ा जाएगा', nat: 'राष्ट्रीय', intl_b: 'अंतर्राष्ट्रीय',
+        src_toast: 'डेमो मोड — आधिकारिक लिंक प्रोडक्शन में जोड़े जाएँगे।',
+        hf_h1: 'मानव सुविधाकर्ता', hf_sub: 'किसी भी वास्तविक निर्णय से पहले डेमो आउटपुट को डोमेन विशेषज्ञ से सत्यापन हेतु भेजें।',
+        hf_role_t: 'मानव सुविधाकर्ता क्यों?', hf_role_d: 'सहायक का आउटपुट डेमो मार्गदर्शन है, कानूनी सलाह नहीं। किसी भी वास्तविक फाइलिंग, लाइसेंस या व्यावसायीकरण चरण से पहले डोमेन विशेषज्ञ (पेटेंट एजेंट, आयुष विशेषज्ञ या जैव विविधता अधिकारी) से सत्यापन आवश्यक है।',
+        f_name: 'नाम', f_name_ph: 'आपका नाम', f_query: 'प्रश्न', f_cat: 'श्रेणी', f_submit: 'समीक्षा के लिए भेजें',
+        hf_list: 'भेजे गए अनुरोध (डेमो)', hf_none: 'अभी कोई अनुरोध नहीं। ऊपर दिया फॉर्म उपयोग करें।', hf_status: 'भेजा गया — डेमो',
+        hf_ok: 'समीक्षा हेतु भेजा गया (डेमो)।', hf_err: 'कृपया नाम और प्रश्न भरें।', hf_clear: 'सूची साफ़ करें',
+        hf_pending: 'शेष जाँचें', hf_pending_note: 'नोट: {n} अनुपालन मद अभी शेष हैं।', hf_all_ok: 'सभी 6 अनुपालन जाँचें पूर्ण हैं (डेमो)।',
+        cancel: 'रद्द करें', confirm_reset_t: 'डेमो डेटा रीसेट करें?', confirm_reset_d: 'इससे लोकल प्रगति साफ़ होगी: चेकलिस्ट, अनुरोध व वर्गीकरण परिणाम।', confirm: 'हाँ, रीसेट करें', reset_ok: 'डेमो डेटा रीसेट हो गया।',
+        ftr_txt: 'IP-SAKTI Sahayak — एसआईएच 2026 डेमो प्रोटोटाइप। सभी डेटा लोकल डेमो डेटा है; कोई लाइव AI, API या कानूनी निर्धारण नहीं।', ftr_built: 'स्मार्ट इंडिया हैकाथन 2026 · पीएस 26045 हेतु निर्मित',
+        cat_other: 'अन्य'
+      }
+    };
+    const t = k => (I18N[state.lang] && I18N[state.lang][k]) || I18N.en[k] || k;
+    const L = o => o[state.lang] || o.en;
+    const fmt = (k, o) => t(k).replace(/\{(\w+)\}/g, (_, x) => o[x]);
+
+    /* 🔶🔶🔶  SECTION: All data below (ASK, CLASS_RES, PATHWAYS, EVIDENCE, SOURCES) is hardcoded demo data — replace with live API calls in production 🔶🔶🔶 */
+    /* ============  data ============ */
+    const ASK = {
+      qu: {
+        en: 'Intent: IP protection for a new Ayurvedic herbal formulation · Domain: Patents + AYUSH regulation + Traditional Knowledge + Biodiversity/ABS · Method: rule-based demo understanding (no live AI).',
+        hi: 'उद्देश्य: नए आयुर्वेदिक हर्बल फॉर्मूलेशन हेतु IP सुरक्षा · क्षेत्र: पेटेंट + आयुष नियामक + पारंपरिक ज्ञान + जैव विविधता/ABS · विधि: नियम-आधारित डेमो समझ (कोई लाइव AI नहीं)।'
+      },
+      ip: {
+        en: 'A new Ayurvedic formulation may be patentable if it is novel, involves an inventive step and is industrially applicable. Under Indian law (demo summary), mere discoveries of things occurring in nature, mere admixtures leading only to aggregation of properties, and inventions based on traditional knowledge may fall outside patentability. If the composition shows a genuine technical advance beyond known classical formulations, a patent application can be considered — supported by prior-art and TKDL checks. Complementary routes: trademark (brand) and trade secret (process).',
+        hi: 'नया आयुर्वेदिक फॉर्मूलेशन पेटेंट-योग्य हो सकता है यदि वह नवीन हो, आविष्कारात्मक चरण रखता हो और औद्योगिक रूप से उपयोगी हो। भारतीय कानून के अनुसार (डेमो सारांश), प्रकृति में पाई जाने वाली वस्तुओं की केवल खोज, केवल गुणों के संग्रह तक सीमित मिश्रण, तथा पारंपरिक ज्ञान पर आधारित आविष्कार पेटेंट-योग्यता से बाहर हो सकते हैं। यदि संरचना ज्ञात शास्त्रीय फॉर्मूलेशन से वास्तविक तकनीकी प्रगति दिखाती है, तो पेटेंट आवेदन पर विचार किया जा सकता है — पूर्व-कला व TKDL जाँच के साथ। पूरक मार्ग: ट्रेडमार्क (ब्रांड) और ट्रेड सीक्रेट (प्रक्रिया)।'
+      },
+      reg: {
+        india: {
+          en: 'Ayurvedic medicines are regulated under the Drugs and Cosmetics Act &amp; Rules: manufacturing licence from the State Licensing Authority, GMP compliance (Schedule T) and labelling requirements. If the product is positioned as a phytopharmaceutical or new drug, the CDSCO route applies. New proprietary ASU formulations have additional safety-demonstration expectations (demo summary — verify with official sources).',
+          hi: 'आयुर्वेदिक औषधियाँ ड्रग्स एंड कॉस्मेटिक्स अधिनियम व नियमों के अंतर्गत नियंत्रित होती हैं: राज्य लाइसेंसिंग प्राधिकरण से विनिर्माण लाइसेंस, GMP पालन (अनुसूची T) व लेबलिंग आवश्यकताएँ। यदि उत्पाद को फाइटोफार्मास्युटिकल या नई औषधि के रूप में प्रस्तुत किया जाए, तो CDSCO मार्ग लागू होता है। नए प्रोप्राइटरी ASU फॉर्मूलेशन हेतु अतिरिक्त सुरक्षा प्रमाण अपेक्षित हैं (डेमो सारांश — आधिकारिक स्रोतों से सत्यापित करें)।'
+        },
+        intl: {
+          en: 'For markets outside India, additional requirements may apply: product registration with the target country&#39;s regulator, quality / contaminant limits, local-language labelling and export permissions. Patent filings may be extended via the PCT route (demo summary — verify with official sources and target-country regulators).',
+          hi: 'भारत के बाहर बाज़ारों हेतु अतिरिक्त आवश्यकताएँ लागू हो सकती हैं: लक्षित देश के नियामक से उत्पाद पंजीकरण, गुणवत्ता / दूषितांश सीमाएँ, स्थानीय भाषा में लेबलिंग व निर्यात अनुमतियाँ। पेटेंट आवेदन PCT मार्ग से विस्तारित किए जा सकते हैं (डेमो सारांश — आधिकारिक स्रोतों व लक्षित देश के नियामकों से सत्यापित करें)।'
+        }
+      },
+      tk: {
+        en: 'If the formulation is drawn from classical texts or community knowledge, it may qualify as Traditional Knowledge. Pure TK is generally not patentable, and codified TK (such as TKDL records) can be cited as prior art. Clearly document which elements are genuinely new — ingredients, proportions, process or demonstrated effect — versus what is already known (demo summary).',
+        hi: 'यदि फॉर्मूलेशन शास्त्रीय ग्रंथों या सामुदायिक ज्ञान से लिया गया है, तो वह पारंपरिक ज्ञान के अंतर्गत आ सकता है। शुद्ध पारंपरिक ज्ञान सामान्यतः पेटेंट-योग्य नहीं होता, और कोडिफाइड पारंपरिक ज्ञान (जैसे TKDL अभिलेख) पूर्व-कला के रूप में उद्धृत किया जा सकता है। स्पष्ट दस्तावेज़ित करें कि कौन-से तत्व वास्तव में नए हैं — सामग्री, अनुपात, प्रक्रिया या प्रदर्शित प्रभाव — और क्या पहले से ज्ञात है (डेमो सारांश)।'
+      },
+      abs: {
+        en: 'Use of biological resources (plants, microbes, animal-derived materials) for research or commercialisation may attract obligations under the Biological Diversity Act: intimation or approval from the National Biodiversity Authority / State Biodiversity Board, and benefit-sharing (ABS) before commercialisation. Maintain records of resource sourcing (demo summary).',
+        hi: 'अनुसंधान या व्यावसायीकरण हेतु जैविक संसाधनों (पौधे, सूक्ष्मजीव, पशु-व्युत्पन्न सामग्री) के उपयोग पर जैव विविधता अधिनियम के दायित्व लागू हो सकते हैं: राष्ट्रीय जैव विविधता प्राधिकरण / राज्य जैव विविधता बोर्ड से सूचना या अनुमोदन, तथा व्यावसायीकरण से पहले लाभ-सहभाजन (ABS)। संसाधन स्रोत का अभिलेख रखें (डेमो सारांश)।'
+      },
+      steps: [{ en: 'Classify the product with the Product Classification tool.', hi: 'उत्पाद वर्गीकरण टूल से उत्पाद का वर्गीकरण करें।', r: 'classify' },
+      { en: 'Run a Prior Art / TK search and record findings.', hi: 'पूर्व-कला / पारंपरिक ज्ञान खोज चलाएँ और निष्कर्ष दर्ज करें।', r: 'prior-art' },
+      { en: 'Compare protection routes in IP Pathway.', hi: 'IP मार्ग में सुरक्षा मार्गों की तुलना करें।', r: 'pathway' },
+      { en: 'Map biological resources and ABS obligations.', hi: 'जैविक संसाधनों व ABS दायित्वों की मैपिंग करें।', r: 'sources' },
+      { en: 'Draft and file the application with a registered patent agent / IP professional.', hi: 'किसी पंजीकृत पेटेंट एजेंट / IP विशेषज्ञ के साथ आवेदन तैयार व फाइल करें।', r: null },
+      { en: 'Complete the Compliance Checklist and route for Human Facilitator review.', hi: 'अनुपालन चेकलिस्ट पूरी करें और मानव सुविधाकर्ता समीक्षा हेतु भेजें।', r: 'compliance' }]
+    };
+
+    const CLASS_RES = {
+      classical: { ic: 'book', t: { en: 'Classical Ayurvedic Medicine', hi: 'शास्त्रीय आयुर्वेदिक औषधि' }, d: { en: 'Established formulation from classical texts / AFI. Licensed as an ASU drug; the formulation itself is prior art — protect the brand and quality, not the formula.', hi: 'शास्त्रीय ग्रंथों / AFI से स्थापित फॉर्मूलेशन। ASU औषधि लाइसेंस; फॉर्मूलेशन स्वयं पूर्व-कला है — ब्रांड व गुणवत्ता की सुरक्षा करें, सूत्र की नहीं।' }, reg: { en: ['State AYUSH licence', 'Schedule T GMP', 'Drugs &amp; Cosmetics Rules'], hi: ['राज्य आयुष लाइसेंस', 'अनुसूची T GMP', 'ड्रग्स एंड कॉस्मेटिक्स नियम'] }, ip: { en: 'Trademark · Trade Secret · GI (community)', hi: 'ट्रेडमार्क · ट्रेड सीक्रेट · GI (सामुदायिक)' } },
+      proprietary: { ic: 'doc', t: { en: 'Proprietary Ayurvedic Medicine', hi: 'प्रोप्राइटरी आयुर्वेदिक औषधि' }, d: { en: 'New / modified ASU formulation licensed as a proprietary medicine. A patent may be possible if a genuine technical advance beyond TK is demonstrated; ABS duties may apply for biological resources.', hi: 'नया / संशोधित ASU फॉर्मूलेशन, प्रोप्राइटरी औषधि लाइसेंस। TK से आगे वास्तविक तकनीकी प्रगति दिखे तो पेटेंट संभव; जैविक संसाधनों हेतु ABS दायित्व लागू हो सकते हैं।' }, reg: { en: ['State AYUSH licence (proprietary)', 'Safety evidence', 'Schedule T GMP'], hi: ['राज्य आयुष लाइसेंस (प्रोप्राइटरी)', 'सुरक्षा प्रमाण', 'अनुसूची T GMP'] }, ip: { en: 'Patent (if beyond TK) · Trademark · Trade Secret', hi: 'पेटेंट (TK से आगे हो तो) · ट्रेडमार्क · ट्रेड सीक्रेट' } },
+      phyto: { ic: 'leaf', t: { en: 'Phytopharmaceutical Drug', hi: 'फाइटोफार्मास्युटिकल औषधि' }, d: { en: 'Standardised plant extract / fraction developed as a drug — CDSCO route under the Drugs &amp; Cosmetics Rules; clinical evaluation expectations apply.', hi: 'मानकीकृत पादप अर्क / अंश, औषधि के रूप में विकसित — ड्रग्स एंड कॉस्मेटिक्स नियमों के अंतर्गत CDSCO मार्ग; नैदानिक मूल्यांकन अपेक्षाएँ लागू।' }, reg: { en: ['CDSCO', 'D&amp;C Rules — Phytopharmaceutical', 'Clinical evaluation'], hi: ['CDSCO', 'डी&amp;सी नियम — फाइटोफार्मास्युटिकल', 'नैदानिक मूल्यांकन'] }, ip: { en: 'Patent (composition / process)', hi: 'पेटेंट (संरचना / प्रक्रिया)' } },
+      newdrug: { ic: 'scale', t: { en: 'New Drug', hi: 'नई औषधि' }, d: { en: 'Treated as a new drug under CDSCO — full clinical development pathway, approvals and safety data required (demo guidance).', hi: 'CDSCO के अंतर्गत नई औषधि — पूर्ण नैदानिक विकास मार्ग, अनुमोदन व सुरक्षा डेटा आवश्यक (डेमो मार्गदर्शन)।' }, reg: { en: ['CDSCO — New Drug', 'Clinical development', 'Approval process'], hi: ['CDSCO — नई औषधि', 'नैदानिक विकास', 'अनुमोदन प्रक्रिया'] }, ip: { en: 'Patent (product / process)', hi: 'पेटेंट (उत्पाद / प्रक्रिया)' } },
+      food: { ic: 'leaf', t: { en: 'Food / Ayurveda Aahar', hi: 'आहार / आयुर्वेद आहार' }, d: { en: 'Falls under FSSAI — the Ayurveda Aahar category for foods based on Ayurvedic recipes; not licensed as a medicine.', hi: 'FSSAI के अंतर्गत — आयुर्वेदिक व्यंजनों पर आधारित आहारों हेतु आयुर्वेद आहार श्रेणी; औषधि लाइसेंस नहीं।' }, reg: { en: ['FSSAI', 'Ayurveda Aahar', 'Labelling rules'], hi: ['FSSAI', 'आयुर्वेद आहार', 'लेबलिंग नियम'] }, ip: { en: 'Trademark · Trade Secret (recipe)', hi: 'ट्रेडमार्क · ट्रेड सीक्रेट (रेसिपी)' } },
+      cosmetic: { ic: 'pen', t: { en: 'Cosmetic', hi: 'कॉस्मेटिक' }, d: { en: 'Regulated as a cosmetic under the Drugs &amp; Cosmetics Rules; claims must stay within cosmetic limits. ABS duties may still apply to biological resources.', hi: 'ड्रग्स एंड कॉस्मेटिक्स नियमों के अंतर्गत कॉस्मेटिक; दावे कॉस्मेटिक सीमाओं में रहें। जैविक संसाधनों हेतु ABS दायित्व फिर भी लागू हो सकते हैं।' }, reg: { en: ['Drugs &amp; Cosmetics Rules', 'Cosmetic claims', 'State licence'], hi: ['ड्रग्स एंड कॉस्मेटिक्स नियम', 'कॉस्मेटिक दावे', 'राज्य लाइसेंस'] }, ip: { en: 'Trademark · Design (packaging)', hi: 'ट्रेडमार्क · डिज़ाइन (पैकेजिंग)' } },
+      review: { ic: 'info', t: { en: 'Needs Review', hi: 'समीक्षा आवश्यक' }, d: { en: 'The answers do not map cleanly to a single demo category. Please route this case to the Human Facilitator for review.', hi: 'उत्तर किसी एक डेमो श्रेणी में स्पष्ट रूप से नहीं आते। कृपया इस केस को मानव सुविधाकर्ता समीक्षा हेतु भेजें।' }, reg: { en: ['Human Facilitator review'], hi: ['मानव सुविधाकर्ता समीक्षा'] }, ip: { en: '—', hi: '—' } }
+    };
+
+    const PATHWAYS = [
+      {
+        id: 'patent', ic: 'doc', n: { en: 'Patent', hi: 'पेटेंट' }, tag: { en: 'Novel product or process', hi: 'नवीन उत्पाद या प्रक्रिया' },
+        p: { en: 'A novel, non-obvious, industrially applicable invention — e.g., a genuinely new composition or extraction process.', hi: 'नवीन, आविष्कारात्मक, औद्योगिक रूप से उपयोगी आविष्कार — जैसे वास्तव में नई संरचना या निष्कर्षण प्रक्रिया।' },
+        w: { en: 'When the formulation or process shows a technical advance beyond classical TK and prior art — subject to exclusions (nature-discoveries, mere admixtures, TK).', hi: 'जब फॉर्मूलेशन या प्रक्रिया शास्त्रीय पा.ज्ञान व पूर्व-कला से आगे तकनीकी प्रगति दिखाए — अपवादों (प्रकृति-खोज, केवल मिश्रण, पा.ज्ञान) के अधीन।' },
+        a: { en: 'Indian Patent Office (demo ref)', hi: 'भारतीय पेटेंट कार्यालय (डेमो संदर्भ)' },
+        x: { en: 'Patentability exclusions for TK / admixtures; TKDL citations; ABS declarations for biological resources.', hi: 'पा.ज्ञान / मिश्रण हेतु पेटेंट-योग्यता अपवाद; TKDL उद्धरण; जैविक संसाधनों हेतु ABS घोषणाएँ।' },
+        tr: { en: 'Up to 20 years (demo)', hi: '20 वर्ष तक (डेमो)' }
+      },
+      {
+        id: 'tm', ic: 'tag', n: { en: 'Trademark', hi: 'ट्रेडमार्क' }, tag: { en: 'Brand identity', hi: 'ब्रांड पहचान' },
+        p: { en: 'Brand name, logo and word / colour marks that identify your product in the market.', hi: 'ब्रांड नाम, लोगो तथा शब्द / रंग चिह्न जो बाज़ार में उत्पाद की पहचान कराते हैं।' },
+        w: { en: 'Always relevant — especially for classical formulations that cannot be patented; the brand becomes the key asset.', hi: 'सदैव प्रासंगिक — विशेषकर शास्त्रीय फॉर्मूलेशन हेतु जो पेटेंट नहीं हो सकते; ब्रांड ही प्रमुख संपत्ति बनता है।' },
+        a: { en: 'CGPDTM / Trade Marks Registry (demo ref)', hi: 'CGPDTM / ट्रेडमार्क रजिस्ट्री (डेमो संदर्भ)' },
+        x: { en: 'Distinctiveness required; avoid marks suggesting government patronage; renew on time.', hi: 'विशिष्टता आवश्यक; सरकारी संरक्षण सूचक चिह्नों से बचें; समय पर नवीनीकरण करें।' },
+        tr: { en: '10 years, renewable (demo)', hi: '10 वर्ष, नवीनीकरण योग्य (डेमो)' }
+      },
+      {
+        id: 'gi', ic: 'award', n: { en: 'GI', hi: 'भौगोलिक संकेत' }, tag: { en: 'Origin-linked goods', hi: 'मूल-संबद्ध माल' },
+        p: { en: 'A sign linking goods to a specific origin with shared quality or reputation — held collectively by producers&#39; associations.', hi: 'कोई चिह्न जो माल को किसी विशिष्ट मूल क्षेत्र से जोड़ता है — उत्पादक संघों द्वारा सामूहिक रूप से धारित।' },
+        w: { en: 'Region-linked community products (demo example: a specific region&#39;s medicinal plant product); individual firms generally cannot own a GI.', hi: 'क्षेत्र-संबद्ध सामुदायिक उत्पाद (डेमो उदाहरण: किसी विशिष्ट क्षेत्र का औषधीय पादप उत्पाद); व्यक्तिगत फर्म सामान्यतः GI नहीं रख सकतीं।' },
+        a: { en: 'GI Registry (demo ref)', hi: 'GI रजिस्ट्री (डेमो संदर्भ)' },
+        x: { en: 'Benefit-sharing within the producer community; &#39;Ayurveda&#39; itself is not GI-ownable.', hi: 'उत्पादक समुदाय में लाभ-सहभाजन; &#39;आयुर्वेद&#39; स्वयं GI-धारक नहीं हो सकता।' },
+        tr: { en: '10 years, renewable (demo)', hi: '10 वर्ष, नवीनीकरण योग्य (डेमो)' }
+      },
+      {
+        id: 'copyright', ic: 'copyc', n: { en: 'Copyright', hi: 'कॉपीराइट' }, tag: { en: 'Original expression', hi: 'मौलिक अभिव्यक्ति' },
+        p: { en: 'Original literary / artistic works — texts, label artwork, photographs, educational content and software.', hi: 'मौलिक साहित्यिक / कलात्मक कृतियाँ — ग्रंथ, लेबल कलाकृति, चित्र, शैक्षिक सामग्री व सॉफ़्टवेयर।' },
+        w: { en: 'Protects expression, not the underlying formulation idea.', hi: 'यह अभिव्यक्ति की सुरक्षा करता है, फॉर्मूलेशन के विचार की नहीं।' },
+        a: { en: 'Copyright Office (demo ref)', hi: 'कॉपीराइट कार्यालय (डेमो संदर्भ)' },
+        x: { en: 'Ideas and formulas are not protected; independent creation is a defence.', hi: 'विचार व सूत्र सुरक्षित नहीं; स्वतंत्र सृजन बचाव है।' },
+        tr: { en: 'Life of author + 60 years (demo)', hi: 'लेखक का जीवन + 60 वर्ष (डेमो)' }
+      },
+      {
+        id: 'design', ic: 'pen', n: { en: 'Design', hi: 'डिज़ाइन' }, tag: { en: 'Product appearance', hi: 'उत्पाद रूप' },
+        p: { en: 'Novel visual features of an article — bottle shape, jar or packaging as applied designs.', hi: 'किसी वस्तु की नवीन दृश्य विशेषताएँ — बोतल आकार, जार या पैकेजिंग।' },
+        w: { en: 'Distinctive product presentation that competitors could copy.', hi: 'विशिष्ट उत्पाद प्रस्तुति जिसे प्रतिस्पर्धी नकल कर सकें।' },
+        a: { en: 'Designs Office (demo ref)', hi: 'डिज़ाइन कार्यालय (डेमो संदर्भ)' },
+        x: { en: 'Must be new and eye-appealing; purely functional features are excluded.', hi: 'नया व आकर्षक होना चाहिए; केवल कार्यात्मक विशेषताएँ वर्जित।' },
+        tr: { en: '10 + 5 years (demo)', hi: '10 + 5 वर्ष (डेमो)' }
+      },
+      {
+        id: 'ts', ic: 'eyeoff', n: { en: 'Trade Secret', hi: 'ट्रेड सीक्रेट' }, tag: { en: 'Confidential know-how', hi: 'गोपनीय जानकारी' },
+        p: { en: 'Confidential know-how — exact ratios, process parameters, supplier lists.', hi: 'गोपनीय जानकारी — सटीक अनुपात, प्रक्रिया मापदंड, आपूर्तिकर्ता सूची।' },
+        w: { en: 'When secrecy is workable and reverse-engineering is hard; no registration — protected by NDAs and internal controls.', hi: 'जब गोपनीयता व्यवहार्य हो और रिवर्स-इंजीनियरिंग कठिन हो; कोई पंजीकरण नहीं — NDA व आंतरिक नियंत्रण से सुरक्षा।' },
+        a: { en: 'Contract law — NDAs (demo ref)', hi: 'अनुबंध कानून — NDA (डेमो संदर्भ)' },
+        x: { en: 'Once disclosed or reverse-engineered, protection is lost; employees need contracts.', hi: 'एक बार प्रकट या रिवर्स-इंजीनियर होने पर सुरक्षा समाप्त; कर्मियों हेतु अनुबंध आवश्यक।' },
+        tr: { en: 'As long as secrecy holds', hi: 'जब तक गोपनीयता बनी रहे' }
+      },
+      {
+        id: 'pvp', ic: 'plant', n: { en: 'Plant Variety Protection', hi: 'पादप किस्म संरक्षण' }, tag: { en: 'New plant varieties', hi: 'नई पादप किस्में' },
+        p: { en: 'New, distinct, stable plant varieties bred or developed by breeders or farmers.', hi: 'प्रजनकों या किसानों द्वारा विकसित नई, भिन्न, स्थिर पादप किस्में।' },
+        w: { en: 'You develop a cultivated variety of a medicinal plant — not the herbal formulation itself.', hi: 'जब आप किसी औषधीय पादप की कृषित किस्म विकसित करें — हर्बल फॉर्मूलेशन स्वयं नहीं।' },
+        a: { en: 'PPV&amp;FR Authority (demo ref)', hi: 'PPV&amp;FR प्राधिकरण (डेमो संदर्भ)' },
+        x: { en: 'Farmers&#39; rights provisions; essentially derived varieties.', hi: 'किसान अधिकारों के प्रावधान; सारतः व्युत्पन्न किस्में।' },
+        tr: { en: '15–18 years, type-dependent (demo)', hi: '15–18 वर्ष, किस्म अनुसार (डेमो)' }
+      }
+    ];
+
+    const EVIDENCE = [
+      { id: 'PA-001', ty: 'classical', rel: 'h', t: 'Classical formulation reference — Trikatu (three pungents)', hi_t: 'शास्त्रीय फॉर्मूलेशन संदर्भ — त्रिकटु (तीन कटु द्रव्य)', s: 'Illustrative entry: a three-herb digestive combination appearing in classical Ayurvedic literature; such codified knowledge may be considered prior art.', hi_s: 'उदाहरण प्रविष्टि: शास्त्रीय आयुर्वेदिक साहित्य में वर्णित तीन-द्रव्य पाचक संयोजन; ऐसा कोडिफाइड ज्ञान पूर्व-कला माना जा सकता है।', w: 'Classical combinations are usually in the public domain — a patent on the same combination would face prior-art and TK objections (demo).', hi_w: 'शास्त्रीय संयोजन सामान्यतः सार्वजनिक डोमेन में होते हैं — उसी संयोजन पर पेटेंट को पूर्व-कला व TK आपत्तियों का सामना करना पड़ सकता है (डेमो)।', kw: ['classical', 'digestion', 'herbal'] },
+      { id: 'PA-002', ty: 'classical', rel: 'h', t: 'Classical formulation reference — Guggulu yoga', hi_t: 'शास्त्रीय फॉर्मूलेशन संदर्भ — गुग्गुलु योग', s: 'Illustrative entry: resin-based joint-care combinations described across classical texts; widely known traditional use.', hi_s: 'उदाहरण प्रविष्टि: शास्त्रीय ग्रंथों में वर्णित रेजिन-आधारित जोड़-देखभाल संयोजन; व्यापक रूप से ज्ञात पारंपरिक उपयोग।', w: 'Known traditional use may defeat novelty of a similar new claim (demo).', hi_w: 'ज्ञात पारंपरिक उपयोग समान नए दावे की नवीनता को समाप्त कर सकता है (डेमो)।', kw: ['joint', 'classical', 'resin'] },
+      { id: 'PA-003', ty: 'tkdl', rel: 'h', t: 'TKDL-style codified entry — plant A + plant B for respiratory support', hi_t: 'TKDL-शैली कोडिफाइड प्रविष्टि — श्वसन सहायता हेतु पादप A + पादप B', s: 'Illustrative codified TK entry in the style of the Traditional Knowledge Digital Library; such entries can be cited against patents lacking novelty.', hi_s: 'पारंपरिक ज्ञान डिजिटल लाइब्रेरी की शैली में उदाहरण कोडिफाइड प्रविष्टि; ऐसी प्रविष्टियाँ नवीनता रहित पेटेंटों के विरुद्ध उद्धृत हो सकती हैं।', w: 'Check whether your ingredient pairs already exist in codified TK before drafting claims (demo).', hi_w: 'दावे तैयार करने से पहले जाँचें कि आपकी सामग्री-जोड़ियाँ कोडिफाइड TK में पहले से तो नहीं हैं (डेमो)।', kw: ['tkdl', 'respiratory', 'codified'] },
+      { id: 'PA-004', ty: 'patent', rel: 'm', t: 'Indian patent publication (illustrative) — herbal composition for joint care', hi_t: 'भारतीय पेटेंट प्रकाशन (उदाहरण) — जोड़ देखभाल हेतु हर्बल संरचना', s: 'Demo record showing how a published application on a similar herbal composition could appear in a search result.', hi_s: 'डेमो अभिलेख दर्शाता है कि समान हर्बल संरचना पर प्रकाशित आवेदन खोज परिणाम में कैसा दिख सकता है।', w: 'Published applications limit novelty of later similar claims — compare composition and effect data (demo).', hi_w: 'प्रकाशित आवेदन बाद के समान दावों की नवीनता सीमित करते हैं — संरचना व प्रभाव डेटा की तुलना करें (डेमो)।', kw: ['joint', 'patent', 'composition'] },
+      { id: 'PA-005', ty: 'patent', rel: 'm', t: 'PCT publication (illustrative) — poly-herbal composition with enhanced bioavailability', hi_t: 'PCT प्रकाशन (उदाहरण) — बढ़ी जैव-उपलब्धता वाला बहु-हर्बल संरचना', s: 'Demo record of an international application claiming a bioavailability-enhancing herbal combination.', hi_s: 'जैव-उपलब्धता बढ़ाने वाले हर्बल संयोजन के दावे वाले अंतर्राष्ट्रीय आवेदन का डेमो अभिलेख।', w: 'Technical-effect claims (e.g., bioavailability) appear often in this space — map your technical advance clearly (demo).', hi_w: 'तकनीकी-प्रभाव दावे (जैसे जैव-उपलब्धता) इस क्षेत्र में आम हैं — अपनी तकनीकी प्रगति स्पष्ट रूप से मैप करें (डेमो)।', kw: ['patent', 'pct', 'bioavailability'] },
+      { id: 'PA-006', ty: 'journal', rel: 'm', t: 'Published clinical study (illustrative) — poly-herbal formulation for digestion', hi_t: 'प्रकाशित नैदानिक अध्ययन (उदाहरण) — पाचन हेतु बहु-हर्बल फॉर्मूलेशन', s: 'Non-patent literature can affect novelty if published before your filing date.', hi_s: 'गैर-पेटेंट साहित्य नवीनता प्रभावित कर सकता है यदि आपकी फाइलिंग तिथि से पहले प्रकाशित हो।', w: 'Keep publication timelines in mind — publish after filing, not before (demo).', hi_w: 'प्रकाशन समय-रेखा का ध्यान रखें — फाइलिंग के बाद प्रकाशित करें, पहले नहीं (डेमो)।', kw: ['journal', 'clinical', 'digestion'] },
+      { id: 'PA-007', ty: 'formulary', rel: 'h', t: 'Ayurvedic Formulary of India — monograph-style entry (illustrative)', hi_t: 'आयुर्वेदिक फॉर्म्युलरी ऑफ इंडिया — मोनोग्राफ-शैली प्रविष्टि (उदाहरण)', s: 'Demo monograph entry: ingredients, proportions and indications listed in a national formulary.', hi_s: 'डेमो मोनोग्राफ प्रविष्टि: राष्ट्रीय फॉर्म्युलरी में सूचीबद्ध सामग्री, अनुपात व संकेत।', w: 'Formulary-listed formulations are typically prior art for patent purposes (demo).', hi_w: 'फॉर्म्युलरी-सूचीबद्ध फॉर्मूलेशन पेटेंट हेतु सामान्यतः पूर्व-कला होते हैं (डेमो)।', kw: ['formulary', 'afi', 'classical'] },
+      { id: 'PA-008', ty: 'tkdl', rel: 'm', t: 'TKDL-style entry — fermentation-based preparation (Asava / Arishta) process note', hi_t: 'TKDL-शैली प्रविष्टि — किण्वन-आधारित तैयारी (आसव / अरिष्ट) प्रक्रिया नोट', s: 'Illustrative process-knowledge entry for fermented preparations; process claims may also face TK objections.', hi_s: 'किण्वित तैयारियों हेतु उदाहरण प्रक्रिया-ज्ञान प्रविष्टि; प्रक्रिया दावों को भी TK आपत्तियाँ हो सकती हैं।', w: 'Even process innovations can be TK-affected — document your genuine process advance (demo).', hi_w: 'प्रक्रिया नवाचार भी TK-प्रभावित हो सकते हैं — अपनी वास्तविक प्रक्रिया प्रगति दस्तावेज़ित करें (डेमो)।', kw: ['fermentation', 'asava', 'process'] }
+    ];
+    const TY_LABEL = { classical: 'ty_classical', patent: 'ty_patent', tkdl: 'ty_tkdl', journal: 'ty_journal', formulary: 'ty_formulary' };
+
+    const SOURCES = [
+      { n: 'IP India', hi_n: 'IP India', ty: 'nat', ic: 'doc', d: { en: 'Patents, Designs, Trademarks &amp; GI — filings, acts and databases.', hi: 'पेटेंट, डिज़ाइन, ट्रेडमार्क व GI — फाइलिंग, अधिनियम व डेटाबेस।' }, c: { en: ['Patents', 'Trademark', 'GI', 'Design'], hi: ['पेटेंट', 'ट्रेडमार्क', 'GI', 'डिज़ाइन'] } },
+      { n: 'Ministry of Ayush', hi_n: 'आयुष मंत्रालय', ty: 'nat', ic: 'leaf', d: { en: 'ASU&amp;H regulation, formularies, pharmacopoeia and AYUSH schemes.', hi: 'ASU&amp;H नियमन, फॉर्म्युलरी, फार्माकोपिया व आयुष योजनाएँ।' }, c: { en: ['ASU Drugs', 'AFI', 'GMP'], hi: ['ASU औषधियाँ', 'AFI', 'GMP'] } },
+      { n: 'TKDL', hi_n: 'TKDL', ty: 'nat', ic: 'book', d: { en: 'Traditional Knowledge Digital Library — codified TK prior-art resource.', hi: 'पारंपरिक ज्ञान डिजिटल लाइब्रेरी — कोडिफाइड पा.ज्ञान पूर्व-कला संसाधन।' }, c: { en: ['Traditional Knowledge', 'Prior Art'], hi: ['पारंपरिक ज्ञान', 'पूर्व-कला'] } },
+      { n: 'National Biodiversity Authority', hi_n: 'राष्ट्रीय जैव विविधता प्राधिकरण', ty: 'nat', ic: 'globe', d: { en: 'ABS approvals and benefit-sharing under the Biological Diversity Act.', hi: 'जैव विविधता अधिनियम के अंतर्गत ABS अनुमोदन व लाभ-सहभाजन।' }, c: { en: ['ABS', 'NBA / SBB'], hi: ['ABS', 'NBA / SBB'] } },
+      { n: 'WIPO', hi_n: 'WIPO', ty: 'intl', ic: 'globe', d: { en: 'Global IP services — PCT, PATENTSCOPE and traditional knowledge portals.', hi: 'वैश्विक IP सेवाएँ — PCT, PATENTSCOPE व पारंपरिक ज्ञान पोर्टल।' }, c: { en: ['PCT', 'Search'], hi: ['PCT', 'खोज'] } },
+      { n: 'CBD', hi_n: 'CBD', ty: 'intl', ic: 'leaf', d: { en: 'Convention on Biological Diversity — conservation and access framework.', hi: 'जैव विविधता अभिसमय — संरक्षण व अभिगम ढाँचा।' }, c: { en: ['Biodiversity', 'Access'], hi: ['जैव विविधता', 'अभिगम'] } },
+      { n: 'Nagoya Protocol', hi_n: 'नागोया प्रोटोकॉल', ty: 'intl', ic: 'scale', d: { en: 'Access &amp; Benefit-Sharing framework for genetic resources.', hi: 'आनुवंशिक संसाधनों हेतु अभिगम व लाभ-सहभाजन ढाँचा।' }, c: { en: ['ABS', 'Genetic resources'], hi: ['ABS', 'आनुवंशिक संसाधन'] } },
+      { n: 'TRIPS (WTO)', hi_n: 'TRIPS (WTO)', ty: 'intl', ic: 'scale', d: { en: 'Global minimum standards for intellectual property protection.', hi: 'बौद्धिक संपदा सुरक्षा हेतु वैश्विक न्यूनतम मानक।' }, c: { en: ['Patents', 'Enforcement'], hi: ['पेटेंट', 'प्रवर्तन'] } }
+    ];
+
+    const CATS = [{ en: 'Patent', hi: 'पेटेंट' }, { en: 'Trademark', hi: 'ट्रेडमार्क' }, { en: 'GI', hi: 'भौगोलिक संकेत (GI)' }, { en: 'Copyright', hi: 'कॉपीराइट' }, { en: 'Design', hi: 'डिज़ाइन' }, { en: 'Trade Secret', hi: 'ट्रेड सीक्रेट' }, { en: 'Plant Variety Protection', hi: 'पादप किस्म संरक्षण' }, { en: 'TK & Prior Art', hi: 'पारंपरिक ज्ञान व पूर्व-कला' }, { en: 'ABS & Biodiversity', hi: 'ABS व जैव विविधता' }, { en: 'Regulatory', hi: 'नियामक' }];
+
+    const NAV = [['dashboard', 'nav_dash', 'home'], ['ask', 'nav_ask', 'spark'], ['classify', 'nav_class', 'grid'], ['pathway', 'nav_ip', 'route'], ['prior-art', 'nav_pa', 'search'], ['compliance', 'nav_comp', 'clip'], ['sources', 'nav_src', 'book'], ['facilitator', 'nav_hf', 'user']];
+    const HASH = { 'dashboard': '#/', 'ask': '#/ask', 'classify': '#/classify', 'pathway': '#/pathway', 'prior-art': '#/prior-art', 'compliance': '#/compliance', 'sources': '#/sources', 'facilitator': '#/facilitator' };
+
+    /* ============ state ============ */
+    const state = {
+      lang: store('lang', 'en'), juris: store('juris', 'india'), route: 'dashboard',
+      query: store('query', SAMPLE_Q.en), answered: false, thinking: false,
+      priorQ: '', priorF: 'all', pw: 'patent',
+      cls: store('cls', { step: 0, a: {}, done: false }),
+      comp: store('comp', { c1: false, c2: false, c3: false, c4: false, c5: false, c6: false }),
+      subs: store('subs', [])
+    };
+    const compCount = () => Object.values(state.comp).filter(Boolean).length;
+
+    /* ============ chrome ============ */
+    function renderHeader() {
+      $('#hdr').innerHTML = `
+ <a class="brand" href="#/">
+   <span class="logo">${EMBLEM}</span>
+   <span><span class="brand-t">IP-SAKTI Sahayak</span><br><span class="brand-s">${t('app_sub')}</span></span>
+ </a>
+ <div class="hdr-ctl">
+   <span class="b-demoPill">${ic('info')} ${t('mode')}</span>
+   <div class="seg" role="group" aria-label="Jurisdiction">
+     <button data-action="juris" data-j="india" class="${state.juris === 'india' ? 'on' : ''}">${ic('flag')}${t('india')}</button>
+     <button data-action="juris" data-j="intl" class="${state.juris === 'intl' ? 'on' : ''}">${ic('globe')}${t('intl')}</button>
+   </div>
+   <div class="seg" role="group" aria-label="Language">
+     <button data-action="lang" data-l="en" class="${state.lang === 'en' ? 'on' : ''}">EN</button>
+     <button data-action="lang" data-l="hi" class="${state.lang === 'hi' ? 'on' : ''}">हिं</button>
+   </div>
+ </div>`;
+    }
+    function renderSide() {
+      const c = compCount();
+      $('#side').innerHTML = `
+ <p class="side-lbl">${t('side_flow')}</p>
+ <nav class="nav">${NAV.map((n, i) => `
+   <button class="nav-item ${state.route === n[0] ? 'on' : ''}" data-action="nav" data-route="${n[0]}">
+     <span class="nstep">${i + 1}</span>${ic(n[2])}<span>${t(n[1])}</span>
+   </button>`).join('')}
+ </nav>
+ <div class="side-card">
+   <div class="mini-t"><span>${t('side_prog')}</span><span class="b ${c === 6 ? 'b-ok' : 'b-info'}">${c}/6</span></div>
+   <div class="mini-bar"><div class="mini-fill ${c === 6 ? 'full' : ''}" style="width:${c / 6 * 100}%"></div></div>
+   <div class="btn-row" style="margin-top:12px">
+     <button class="btn btn-s" data-action="reset">${ic('refresh')}<span style="font-size:13px">${t('side_reset')}</span></button>
+   </div>
+ </div>
+ <p class="side-ft">${t('side_v')}</p>`;
+    }
+    function renderFooter() {
+      $('#ftr').innerHTML = `<span class="logo" style="color:var(--navy)">${EMBLEM}</span><span>${t('ftr_txt')}</span><span style="margin-left:auto">· ${t('ftr_built')} ·</span>`;
+    }
+
+    /* ============ shared components ============ */
+    const pagehead = (n, title, sub) => `<div class="pagehead">
+  <span class="crumb">${ic('chev')} ${t('flow_lbl')} · <b>${fmt('stepof', { n })}</b></span>
+  <h1>${title}</h1><p class="sub">${sub}</p></div>`;
+    const badges = (arr) => `<div class="chiprow">${arr.map(b => `<span class="b ${b[0]}">${b[1]}</span>`).join('')}</div>`;
+
+    /* ============ views ============ */
+    function vDash() {
+      const phs = [t('ph1'), t('ph2'), t('ph3')];
+      const jurisLine = state.juris === 'india'
+        ? { en: 'Guidance tuned for: India (AYUSH · CDSCO · NBA)', hi: 'मार्गदर्शन लक्षित: भारत (आयुष · CDSCO · NBA)' }
+        : { en: 'Guidance tuned for: International markets (PCT · Nagoya)', hi: 'मार्गदर्शन लक्षित: अंतर्राष्ट्रीय बाज़ार (PCT · नागोया)' };
+      const qa = [['classify', 'qa1_t', 'qa1_d', 'grid'], ['pathway', 'qa2_t', 'qa2_d', 'route'], ['prior-art', 'qa3_t', 'qa3_d', 'search'], ['compliance', 'qa4_t', 'qa4_d', 'clip']];
+      return `
+ ${pagehead(1, t('nav_dash'), '')}
+ <section class="hero">
+   <span class="hero-em">${EMBLEM}</span>
+   <span class="kick">${ic('spark')}${t('dash_kick')}</span>
+   <h1>${t('dash_h1')}</h1>
+   <p class="hsub">${t('dash_sub')}</p>
+   <span class="juris-line">${ic('globe')}${L(jurisLine)}</span>
+   <form class="searchrow" data-form="hero-ask">
+     <label class="hsearch" style="display:flex;flex-direction:column;gap:4px">
+       <span style="font:700 12px 'Anek Devanagari';color:#8fa6cd;letter-spacing:1px;text-transform:uppercase">${t('search_lbl')}</span>
+       <input class="hsearch" name="q" data-ph-rot data-phs='${esc(JSON.stringify(phs))}' value="${esc(state.query !== SAMPLE_Q.en ? state.query : '')}" placeholder="${esc(phs[0])}" style="padding:0;font-size:15.5px" aria-label="${t('search_lbl')}"/>
+     </label>
+     <button class="btn btn-a" type="submit">${ic('send')}${t('btn_ask')}</button>
+   </form>
+ </section>
+
+ <div class="card sec-gap" style="padding:14px 18px">
+   <div class="notice n-warn" style="border:none;background:none;padding:0;color:inherit">
+     ${ic('info')}<span>${t('notice')}</span>
+   </div>
+ </div>
+
+ <div class="card sec-gap">
+   <div class="card-t">${ic('grid')}<h2>${t('quick_lbl')}</h2></div>
+   <div class="grid2">
+   ${qa.map(q => `<button class="qa-card" data-action="nav" data-route="${q[0]}">
+      <span class="qa-ic">${ic(q[3], 'lg')}</span><h3>${t(q[1])}</h3><p>${t(q[2])}</p>
+      <span class="qa-go">${t('go')} ${ic('arr')}</span></button>`).join('')}
+   </div>
+ </div>
+
+ <div class="card sec-gap">
+   <div class="card-t">${ic('route')}<h2>${t('flow_lbl')}</h2></div>
+   <div class="stepper">${NAV.map((n, i) => `
+     <button class="st-item ${state.route === n[0] ? 'on' : ''}" data-action="nav" data-route="${n[0]}">
+       <span class="nstep">${i + 1}</span>${t(n[1])}</button>
+     ${i < NAV.length - 1 ? `<span class="st-sep">${ic('chev')}</span>` : ''}`).join('')}
+   </div>
+ </div>
+
+ <div class="card sec-gap">
+   <div class="card-t">${ic('leaf')}<h2>${t('cov_t')}</h2></div>
+   <div class="grid2">
+     ${[1, 2, 3, 4].map(i => `<div style="display:flex;gap:11px;align-items:flex-start"><span class="qa-ic" style="width:36px;height:36px">${ic('checkc')}</span><p style="font-weight:600">${t('cov' + i)}</p></div>`).join('')}
+   </div>
+ </div>`;
+    }
+
+    function vAsk() {
+      let body = '';
+      if (state.thinking) {
+        body = `<div class="card"><div class="think">
+     <div><span class="dot"></span>${t('think1')}</div>
+     <div><span class="dot" style="animation-delay:.2s"></span>${t('think2')}</div>
+     <div><span class="dot" style="animation-delay:.4s"></span>${t('think3')}</div></div></div>`;
+      } else if (!state.answered) {
+        body = `<div class="card" style="text-align:center;padding:36px 22px">
+     <span class="qa-ic" style="margin:0 auto 12px;width:52px;height:52px">${ic('spark', 'xl')}</span>
+     <p style="color:var(--muted);max-width:480px;margin:0 auto 16px">${t('hint')}</p>
+     <button class="btn btn-p" data-action="ask-run">${ic('send')}${t('run')}</button></div>`;
+      } else {
+        const reg = ASK.reg[state.juris === 'india' ? 'india' : 'intl'];
+        const jurName = state.juris === 'india' ? t('india') : t('intl');
+        const quTxt = L(ASK.qu).replace(/\{juris\}/, ''); // jurisdiction shown as chip
+        const flowSec = (n, title, inner, alt) => `
+     <div class="flow-item"><span class="fnode ${alt ? 'alt' : ''}">${n}</span>
+       <div class="card" style="box-shadow:none">
+         <div class="card-t" style="margin-bottom:7px">${title}</div>${inner}</div></div>`;
+        body = `
+   <div class="card">
+     <div class="ans-head">
+       <h2>${t('ans_t')}</h2>
+       <span class="b ">${ic('info')} DATA</span>
+       <span class="b b-warn" title="${esc(t('conf_note'))}">${t('conf')}: ${t('conf_v')}</span>
+     </div>
+     <p style="font-size:13.5px;color:var(--muted)">${t('conf_note')}</p>
+   </div>
+   <div class="flow">
+   ${flowSec(1, t('s_qu'), `
+     ${badges([['b-info', jurName], ['b-mut', 'Patents'], ['b-mut', 'AYUSH'], ['b-mut', 'TK'], ['b-mut', 'ABS']])}
+     <p style="margin-top:10px">${quTxt}</p>`)}
+   ${flowSec(2, t('s_ip'), `<p>${L(ASK.ip)}</p>`)}
+   ${flowSec(3, t('s_reg'), `<p>${L(reg)}</p>`, true)}
+   ${flowSec(4, t('s_tk'), `<p>${L(ASK.tk)}</p>`)}
+   ${flowSec(5, t('s_abs'), `<p>${L(ASK.abs)}</p>`, true)}
+   ${flowSec(6, t('s_next'), `<ol class="qlist">${ASK.steps.map((s, i) => `
+      <li><span class="qnum">${i + 1}</span><span>${L(s)} ${s.r ? `<button class="lnk" data-action="nav" data-route="${s.r}">→ ${t('ns_open')}</button>` : `<span class="b b-mut" style="margin-left:6px">${t('ns_help')}</span>`}</span></li>`).join('')}</ol>`)}
+   ${flowSec(7, t('s_src'), `
+      <p style="font-size:13.5px;color:var(--muted);margin-bottom:9px">${t('src_ref')}:</p>
+      <div class="chiprow"><span class="chip">IP India</span><span class="chip">Ministry of Ayush</span><span class="chip">TKDL</span><span class="chip">National Biodiversity Authority</span></div>
+      <div class="btn-row" style="margin-top:14px">
+        <button class="btn btn-o" data-action="nav" data-route="sources">${ic('book')}${t('view_src')}</button>
+        <span class="b b-demo"> DATA</span>
+      </div>`)}
+   </div>
+   <div class="btn-row sec-gap">
+     <button class="btn btn-p" data-action="nav" data-route="classify">${ic('grid')}${t('act_ip') === 'x' ? '' : t('nav_class')} ${ic('arr')}</button>
+     <button class="btn btn-o" data-action="nav" data-route="prior-art">${ic('search')}${t('nav_pa')}</button>
+     <button class="btn btn-o" data-action="nav" data-route="compliance">${ic('clip')}${t('nav_comp')}</button>
+   </div>`;
+      }
+      return `${pagehead(2, t('ask_h1'), t('ask_sub'))}
+ <div class="card">
+   <div class="card-t">${ic('spark')}${t('q_lbl')}</div>
+   <form data-form="ask-run">
+     <textarea class="querybox" name="q" data-input="ask-q">${esc(state.query)}</textarea>
+     <div class="btn-row" style="margin-top:12px">
+       <button class="btn btn-p" type="submit" ${state.thinking ? 'disabled' : ''}>${ic('send')}${t('run')}</button>
+       <button class="btn btn-s" type="button" data-action="ask-reset">${ic('refresh')}${t('reset')}</button>
+       <span class="b b" style="margin-left:auto">DATA</span>
+     </div>
+   </form>
+ </div>
+ <div class="sec-gap">${body}</div>`;
+    }
+
+    const CLS_QS = ['c_q1', 'c_q2', 'c_q3', 'c_q4', 'c_q5', 'c_q6'];
+    function computeClass(a) {
+      const cat = a.q5;
+      if (cat === 'food') return 'food'; if (cat === 'cosmetic') return 'cosmetic';
+      if (cat === 'phyto') return 'phyto'; if (cat === 'newdrug') return 'newdrug';
+      if (a.q1 === 'yes' && a.q2 === 'no') return 'classical';
+      if (a.q2 === 'yes') return 'proprietary';
+      return 'review';
+    }
+    function vClassify() {
+      const c = state.cls;
+      let body = '';
+      if (c.done) {
+        const key = computeClass(c.a); const r = CLASS_RES[key];
+        const flags = [];
+        if (c.a.q3 === 'yes') flags.push(['b-warn', t('abs_warn')]);
+        if (c.a.q4 === 'yes') flags.push(['b-info', t('tk_warn')]);
+        if (c.a.q3 === 'no' && key !== 'review') flags.push(['b-mut', t('no_bio')]);
+        body = `<div class="card">
+     <div class="ans-head"><h2 style="font-size:21px;color:var(--navy2);margin-right:auto">${t('res_t')}</h2>
+       <span class="b b"> DATA</span></div>
+     <div class="res-badge" style="margin:12px 0 14px">${ic(r.ic, 'lg')}${L(r.t)}</div>
+     ${flags.length ? `<div class="chiprow" style="margin-bottom:14px">${flags.map(f => `<span class="b ${f[0]}">${f[1]}</span>`).join('')}</div>` : ''}
+     <p style="max-width:720px">${L(r.d)}</p>
+     <dl class="kv" style="margin-top:16px">
+       <dt>${t('route_lbl')}</dt><dd><div class="chiprow">${L(r.reg).map(x => `<span class="chip">${x}</span>`).join('')}</div></dd>
+       <dt>${t('ip_hint')}</dt><dd>${L(r.ip)}</dd>
+     </dl>
+     <div class="btn-row" style="margin-top:18px">
+       <button class="btn btn-p" data-action="nav" data-route="pathway">${ic('route')}${t('act_ip')}</button>
+       <button class="btn btn-o" data-action="nav" data-route="prior-art">${ic('search')}${t('act_pa')}</button>
+       <button class="btn btn-o" data-action="nav" data-route="compliance">${ic('clip')}${t('act_comp')}</button>
+       <button class="btn btn-s" data-action="crestart">${ic('refresh')}${t('restart')}</button>
+     </div>
+   </div>`;
+      } else {
+        const i = c.step; const qk = CLS_QS[i];
+        let opts = '';
+        if (i < 4) {
+          opts = ['yes', 'no'].map(v => `<button class="opt yn" data-action="cq" data-q="q${i + 1}" data-v="${v}"><span class="optmark"></span>${v === 'yes' ? t('opt_y') : t('opt_n')}</button>`).join('');
+        } else if (i === 4) {
+          const o = ['c_q5o1', 'c_q5o2', 'c_q5o3', 'c_q5o4', 'c_q5o5'];
+          opts = o.map((k, j) => `<button class="opt" data-action="cq" data-q="q5" data-v="${['asu', 'phyto', 'newdrug', 'food', 'cosmetic'][j]}"><span class="optmark"></span>${t(k)}</button>`).join('');
+        } else {
+          opts = [['india', t('india')], ['intl', t('intl')]].map(o => `<button class="opt yn" data-action="cq" data-q="q6" data-v="${o[0]}"><span class="optmark"></span>${o[1]}</button>`).join('');
+        }
+        body = `<div class="card">
+     <div class="wiz-bar">
+       <span class="b b-info">${fmt('q_of', { n: i + 1, m: 6 })}</span>
+       <div class="prog"><div class="prog-fill" style="width:${(i) / 6 * 100}%"></div></div>
+       <button class="btn btn-s" data-action="crestart">${ic('refresh')}${t('restart')}</button>
+     </div>
+     <p class="wiz-q">${t(qk)}</p>
+     ${opts}
+     <div class="btn-row" style="margin-top:10px">
+       <button class="btn btn-o" data-action="cback" ${i === 0 ? 'disabled' : ''}>${ic('chev')} ${t('back')}</button>
+     </div>
+   </div>`;
+      }
+      return `${pagehead(3, t('class_h1'), t('class_sub'))}${body}`;
+    }
+
+    function vPathway() {
+      const idx = PATHWAYS.findIndex(p => p.id === state.pw); const p = PATHWAYS[idx];
+      return `${pagehead(4, t('ip_h1'), t('ip_sub'))}
+ <div class="card">
+   <div class="pwgrid">${PATHWAYS.map(x => `
+     <button class="pw-card ${x.id === state.pw ? 'on' : ''}" data-action="pw" data-id="${x.id}">${ic(x.ic)}${L(x.n)}</button>`).join('')}
+   </div>
+   <div class="card" style="box-shadow:none;border:1.5px solid var(--line);margin-top:0">
+     <div class="card-t">${ic(p.ic)}<h2 style="font-size:20px">${L(p.n)}</h2>
+       <span class="b b-info" style="margin-left:auto">${L(p.tag)}</span></div>
+     <dl class="kv" style="margin-top:6px">
+       <dt>${t('pw_protects')}</dt><dd>${L(p.p)}</dd>
+       <dt>${t('pw_when')}</dt><dd>${L(p.w)}</dd>
+       <dt>${t('pw_auth')}</dt><dd>${L(p.a)}</dd>
+       <dt>${t('pw_watch')}</dt><dd>${L(p.x)}</dd>
+       <dt>${t('pw_term')}</dt><dd>${L(p.tr)}</dd>
+     </dl>
+     <div class="pw-nav">
+       <button class="btn btn-o" data-action="pw-prev">${ic('chev')} ${t('pw_prev')}</button>
+       <button class="btn btn-p" data-action="pw-next">${t('pw_next')} ${ic('arr')}</button>
+       <span class="pw-count">${fmt('route_n', { n: idx + 1, m: PATHWAYS.length })}</span>
+       <span class="b b">DATA</span>
+     </div>
+     <div class="notice n-blue" style="margin-top:14px">${ic('info')}<span>${t('pw')}</span></div>
+   </div>
+ </div>`;
+    }
+
+    function paFiltered() {
+      const q = state.priorQ.trim().toLowerCase();
+      return EVIDENCE.filter(e => {
+        if (state.priorF !== 'all' && e.ty !== state.priorF) return false;
+        if (!q) return true;
+        return (e.t + ' ' + e.s + ' ' + e.kw.join(' ')).toLowerCase().includes(q);
+      });
+    }
+    function paResultsHTML() {
+      const list = paFiltered();
+      if (!list.length) return `<div class="card" style="text-align:center;padding:34px">
+   <p style="color:var(--muted);margin-bottom:14px">${t('pa_none')}</p>
+   <button class="btn btn-o" data-action="pa-clear">${ic('refresh')}${t('pa_clear')}</button></div>`;
+      return `<p style="font-size:13.5px;color:var(--muted);margin:0 2px 10px">${fmt('pa_count', { n: list.length })}</p>
+ <div class="grid3">${list.map(e => {
+        const ei = EVIDENCE.indexOf(e);
+        return `<button class="pa-card" data-action="pa" data-i="${ei}">
+     <span class="b b pa-tag">DATA</span>
+     <h3>${state.lang === 'hi' ? e.hi_t : e.t}</h3>
+     <p>${state.lang === 'hi' ? e.hi_s : e.s}</p>
+     <div class="pa-meta">
+       <span class="b ${e.rel === 'h' ? 'b-info' : 'b-mut'}">${e.rel === 'h' ? t('pa_rel_h') : t('pa_rel_m')}</span>
+       <span class="chip">${t(TY_LABEL[e.ty])}</span>
+       <span class="pa-id">${e.id}</span>
+     </div></button>`;
+      }).join('')}
+ </div>`;
+    }
+    function vPriorArt() {
+      const filters = [['all', t('pa_all')], ['classical', t('ty_classical')], ['patent', t('ty_patent')], ['tkdl', t('ty_tkdl')], ['journal', t('ty_journal')], ['formulary', t('ty_formulary')]];
+      return `${pagehead(5, t('pa_h1'), t('pa_sub'))}
+ <div class="notice n-warn">${ic('alert')}<span><b>${t('pa_disc')}</b></span></div>
+ <div class="card sec-gap">
+   <div class="pa-tools">
+     <div class="pa-search">${ic('search')}
+       <input class="inp" data-input="pa-q" value="${esc(state.priorQ)}" placeholder="${t('pa_search_ph')}" aria-label="${t('pa_h1')}"/></div>
+     <span class="b "> DATA</span>
+   </div>
+   <div class="chiprow" style="margin-bottom:16px">
+     ${filters.map(f => `<button class="chip" data-action="pf" data-f="${f[0]}" style="${state.priorF === f[0] ? 'background:var(--navy);color:#fff;border-color:var(--navy)' : ''}">${f[1]}</button>`).join('')}
+   </div>
+   <div id="pa-results">${paResultsHTML()}</div>
+ </div>`;
+    }
+
+    const COMP_KEYS = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6'];
+    function vCompliance() {
+      const c = compCount(); const done = c === 6;
+      return `${pagehead(6, t('comp_h1'), t('comp_sub'))}
+ <div class="card">
+   <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap;margin-bottom:8px">
+     <div class="ring">
+       <svg width="96" height="96"><circle cx="48" cy="48" r="41" fill="none" stroke="var(--line2)" stroke-width="9"/>
+       <circle cx="48" cy="48" r="41" fill="none" stroke="${done ? 'var(--green)' : 'var(--blue)'}" stroke-width="9" stroke-linecap="round" stroke-dasharray="${2 * Math.PI * 41}" stroke-dashoffset="${2 * Math.PI * 41 * (1 - c / 6)}"/></svg>
+       <b>${Math.round(c / 6 * 100)}%</b>
+     </div>
+     <div style="flex:1;min-width:220px">
+       <div class="ans-head" style="margin-bottom:6px">
+         <h2 style="font-size:19px;margin-right:auto">${fmt('comp_x6', { n: c })}</h2>
+         <span class="b ${done ? 'b-ok' : 'b-warn'}">${done ? t('status_ready') : t('status_pending')}</span>
+       </div>
+       <p style="font-size:13.5px;color:var(--muted)">${t('comp_save')}</p>
+     </div>
+   </div>
+   <div style="margin-top:6px">
+   ${COMP_KEYS.map((k, i) => `
+     <div class="ck-row ${state.comp[k] ? 'done' : ''}" data-action="ct" data-i="${k}" role="checkbox" aria-checked="${state.comp[k]}" tabindex="0">
+       <span class="ckbox">${state.comp[k] ? ic('check') : ''}</span>
+       <div style="flex:1"><h4>${t('ck' + (i + 1))}</h4><p>${t('cd' + (i + 1))}</p></div>
+       <span class="b ${state.comp[k] ? 'b-ok' : 'b-mut'}">${state.comp[k] ? '✓ ' + t('status_ready') : t('status_pending')}</span>
+     </div>`).join('')}
+   </div>
+   ${done ? `<div class="notice n-green" style="margin-top:16px">${ic('checkc')}<span><b>${t('comp_done_t')}</b> — ${t('comp_done_d')}</span></div>` : ''}
+   <div class="btn-row" style="margin-top:18px">
+     <button class="btn ${done ? 'btn-g' : 'btn-p'}" data-action="open-hf">${ic('user')}${t('comp_review')}</button>
+     <button class="btn btn-s" data-action="comp-reset">${ic('refresh')}${t('comp_reset')}</button>
+     ${!done ? `<span class="b b-warn">${fmt('pending_n', { n: 6 - c })}</span>` : ''}
+   </div>
+ </div>`;
+    }
+
+    function vSources() {
+      return `${pagehead(7, t('src_h1'), t('src_sub'))}
+ <div class="notice n-blue">${ic('info')}<span>${t('src_note_t')}</span></div>
+ <div class="grid3 sec-gap">
+ ${SOURCES.map((s, i) => `
+   <div class="src-card">
+     <div class="src-top">
+       <span class="src-ic ${s.ty}">${ic(s.ic, 'lg')}</span>
+       <div><h3>${state.lang === 'hi' ? s.hi_n : s.n}</h3>
+       <span class="b ${s.ty === 'nat' ? 'b-info' : 'b-demo'}">${s.ty === 'nat' ? t('nat') : t('intl_b')}</span></div>
+     </div>
+     <p>${L(s.d)}</p>
+     <div class="chiprow">${L(s.c).map(x => `<span class="chip">${x}</span>`).join('')}</div>
+     <button class="btn btn-o" style="width:100%" data-action="src" data-i="${i}">${ic('ext')}${t('src_btn')}</button>
+   </div>`).join('')}
+ </div>`;
+    }
+
+    const HF_CATS = CATS.concat([{ en: t('cat_other'), hi: t('cat_other') }]);
+    function hfFormHTML() {
+      const pend = 6 - compCount();
+      return `<form data-form="hf">
+   <div class="field"><label class="lbl" for="hf-name">${t('f_name')} *</label>
+     <input class="inp" id="hf-name" name="name" placeholder="${t('f_name_ph')}"/></div>
+   <div class="field"><label class="lbl" for="hf-q">${t('f_query')} *</label>
+     <textarea class="inp txa" id="hf-q" name="query">${esc(state.query)}</textarea></div>
+   <div class="field"><label class="lbl" for="hf-cat">${t('f_cat')}</label>
+     <select class="inp" id="hf-cat" name="cat">${HF_CATS.map(c => `<option>${L(c)}</option>`).join('')}</select></div>
+   <div class="btn-row">
+     <button class="btn btn-p" type="submit">${ic('send')}${t('f_submit')}</button>
+   </div>
+ </form>`;
+    }
+    function vFacilitator() {
+      return `${pagehead(8, t('hf_h1'), t('hf_sub'))}
+ <div class="grid2" style="align-items:start">
+   <div class="card">
+     <div class="card-t">${ic('user')}${t('hf_role_t')}</div>
+     <p style="font-size:14.5px;color:var(--muted)">${t('hf_role_d')}</p>
+     <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--line2)">
+       <div class="ans-head" style="margin-bottom:10px">
+         <h3 style="font-size:16px;color:var(--navy2);margin-right:auto">${t('hf_pending')}</h3>
+         <span class="b ${compCount() === 6 ? 'b-ok' : 'b-warn'}">${compCount()}/6</span></div>
+       <p style="font-size:13.5px;color:var(--muted)">${compCount() === 6 ? t('hf_all_ok') : fmt('hf_pending_note', { n: 6 - compCount() })}</p>
+       <div class="btn-row" style="margin-top:12px">
+         <button class="btn btn-o" data-action="nav" data-route="compliance">${ic('clip')}${t('nav_comp')}</button>
+       </div>
+     </div>
+   </div>
+   <div class="card"><div class="card-t">${ic('send')}${t('f_submit')}</div>${hfFormHTML()}</div>
+ </div>
+ <div class="card sec-gap">
+   <div class="card-t">${ic('doc')}${t('hf_list')}<span class="b " style="margin-left:auto"> DATA</span></div>
+   ${state.subs.length ? state.subs.map((s, i) => `
+     <div class="hf-item">
+       <span class="nstep" style="width:30px;height:30px;font-size:12px">${i + 1}</span>
+       <div style="flex:1"><h4>${esc(s.name)} · <span style="color:var(--muted);font-weight:500">${esc(s.cat)}</span></h4>
+         <p>${esc(s.query).length > 140 ? esc(s.query).slice(0, 140) + '…' : esc(s.query)}</p>
+         <div class="hf-sub"><span class="b b-info">${t('hf_status')}</span><span class="pa-id">${s.id} · ${s.date}</span></div>
+       </div>
+     </div>`).join('')
+          : `<p style="color:var(--muted);padding:10px 2px">${t('hf_none')}</p>`}
+   ${state.subs.length ? `<div class="btn-row" style="margin-top:12px"><button class="btn btn-s" data-action="hf-clear">${ic('refresh')}${t('hf_clear')}</button></div>` : ''}
+ </div>`;
+    }
+
+    /* ============ render & routing ============ */
+    const VIEWS = { dashboard: vDash, ask: vAsk, classify: vClassify, pathway: vPathway, 'prior-art': vPriorArt, compliance: vCompliance, sources: vSources, facilitator: vFacilitator };
+    function render() {
+      renderHeader(); renderSide(); renderFooter();
+      $('#view').innerHTML = VIEWS[state.route]();
+      document.title = 'IP-SAKTI Sahayak — ' + t('nav_' + ({ dashboard: 'dash', ask: 'ask', classify: 'class', pathway: 'ip', 'prior-art': 'pa', compliance: 'comp', sources: 'src', facilitator: 'hf' }[state.route]));
+      window.scrollTo({ top: 0 });
+    }
+    function onRoute() {
+      const h = (location.hash || '#/').replace('#/', '');
+      const r = Object.keys(HASH).find(k => HASH[k] === '#/' + h) || 'dashboard';
+      state.route = r; render();
+    }
+    function go(r) {
+      if (location.hash === HASH[r]) { render(); return }
+      location.hash = HASH[r];
+    }
+
+    /* ============ modal & toast ============ */
+    function openModal(html) { $('#modal-root').innerHTML = `<div class="modal-ov" data-action="ov-close"><div class="modal">${html}</div></div>` }
+    function closeModal() { $('#modal-root').innerHTML = '' }
+    function toast(msg, icn = 'checkc') {
+      const el = document.createElement('div'); el.className = 'toast'; el.innerHTML = `${ic(icn)}<span>${msg}</span>`;
+      $('#toast-root').appendChild(el); setTimeout(() => { el.style.opacity = '0'; el.style.transition = 'opacity .3s'; setTimeout(() => el.remove(), 320) }, 3400);
+    }
+
+    /* ============ interactions ============ */
+    function runAsk() {
+      if (state.thinking) return;
+      state.thinking = true; render();
+      setTimeout(() => { state.thinking = false; if (state.route === 'ask') { state.answered = true; render() } }, 950);
+    }
+    function handleHfSubmit(form) {
+      const name = form.name.value.trim(), q = form.query.value.trim();
+      if (!name || !q) { toast(t('hf_err'), 'alert'); return }
+      const n = String(state.subs.length + 1).padStart(3, '0');
+      state.subs.unshift({
+        id: 'HF-' + n, name, cat: form.cat.value, query: q,
+        date: new Date().toLocaleDateString(state.lang === 'hi' ? 'hi-IN' : 'en-IN', { day: '2-digit', month: 'short', year: 'numeric' })
+      });
+      save('subs', state.subs); closeModal(); go('facilitator'); toast(t('hf_ok'));
+    }
+
+    document.addEventListener('click', e => {
+      const el = e.target.closest('[data-action]'); if (!el) return;
+      const a = el.dataset.action;
+      if (a === 'nav') go(el.dataset.route);
+      else if (a === 'lang') { state.lang = el.dataset.l; save('lang', state.lang); document.documentElement.lang = state.lang; render(); toast(state.lang === 'hi' ? 'भाषा: हिन्दी' : 'Language: English', 'globe') }
+      else if (a === 'juris') { state.juris = el.dataset.j; save('juris', state.juris); render() }
+      else if (a === 'reset') {
+        openModal(`<div class="modal-h"><h3>${t('confirm_reset_t')}</h3><button class="btn btn-s" data-action="modal-close">${ic('x')}</button></div>
+   <div class="modal-b"><p>${t('confirm_reset_d')}</p></div>
+   <div class="modal-f"><button class="btn btn-s" data-action="modal-close">${t('cancel')}</button>
+   <button class="btn btn-p" data-action="confirm-reset" style="background:var(--saffron)">${t('confirm')}</button></div>`);
+      }
+      else if (a === 'confirm-reset') {
+        ['lang', 'juris', 'query', 'cls', 'comp', 'subs'].forEach(k => localStorage.removeItem('ipsakti_' + k));
+        state.lang = 'en'; state.juris = 'india'; state.query = SAMPLE_Q.en; state.cls = { step: 0, a: {}, done: false };
+        state.comp = { c1: false, c2: false, c3: false, c4: false, c5: false, c6: false }; state.subs = [];
+        closeModal(); go('dashboard'); toast(t('reset_ok'));
+      }
+      else if (a === 'ask-reset') { state.query = SAMPLE_Q.en; state.answered = false; save('query', state.query); render() }
+      else if (a === 'ask-run') { runAsk() }
+      else if (a === 'cq') {
+        state.cls.a[el.dataset.q] = el.dataset.v;
+        if (state.cls.step >= 5) { state.cls.done = true; state.cls.step = 6 }
+        else state.cls.step++;
+        save('cls', state.cls); render();
+      }
+      else if (a === 'cback') { if (state.cls.step > 0) { state.cls.step--; state.cls.done = false; save('cls', state.cls); render() } }
+      else if (a === 'crestart') { state.cls = { step: 0, a: {}, done: false }; save('cls', state.cls); render() }
+      else if (a === 'pw') { state.pw = el.dataset.id; render() }
+      else if (a === 'pw-prev' || a === 'pw-next') {
+        let i = PATHWAYS.findIndex(p => p.id === state.pw);
+        i = a === 'pw-prev' ? (i - 1 + PATHWAYS.length) % PATHWAYS.length : (i + 1) % PATHWAYS.length;
+        state.pw = PATHWAYS[i].id; render();
+      }
+      else if (a === 'pf') { state.priorF = el.dataset.f; render() }
+      else if (a === 'pa-clear') { state.priorQ = ''; render() }
+      else if (a === 'pa') { openEvidenceModal(+el.dataset.i) }
+      else if (a === 'ct') {
+        const k = el.dataset.i; state.comp[k] = !state.comp[k]; save('comp', state.comp); render();
+      }
+      else if (a === 'comp-reset') { state.comp = { c1: false, c2: false, c3: false, c4: false, c5: false, c6: false }; save('comp', state.comp); render() }
+      else if (a === 'open-hf') {
+        const pend = 6 - compCount();
+        openModal(`<div class="modal-h"><h3>${t('comp_review')}</h3><button class="btn btn-s" data-action="modal-close">${ic('x')}</button></div>
+   <div class="modal-b">
+     <div class="notice ${pend ? 'n-warn' : 'n-green'}" style="margin-bottom:16px">${ic(pend ? 'alert' : 'checkc')}<span>${pend ? fmt('hf_pending_note', { n: pend }) : t('hf_all_ok')}</span></div>
+     ${hfFormHTML()}
+   </div>`);
+      }
+      else if (a === 'src') { toast(t('src_toast'), 'info') }
+      else if (a === 'hf-clear') { state.subs = []; save('subs', state.subs); render() }
+      else if (a === 'modal-close') closeModal();
+      else if (a === 'ov-close') { if (e.target === el) closeModal() }
+    });
+
+    document.addEventListener('submit', e => {
+      const f = e.target.closest('[data-form]'); if (!f) return; e.preventDefault();
+      if (f.dataset.form === 'hero-ask') {
+        const v = f.q.value.trim(); state.query = v || SAMPLE_Q[state.lang]; save('query', state.query);
+        state.answered = false; go('ask'); setTimeout(runAsk, 60);
+      }
+      else if (f.dataset.form === 'ask-run') {
+        const v = f.q.value.trim(); state.query = v || SAMPLE_Q[state.lang]; save('query', state.query); runAsk();
+      }
+      else if (f.dataset.form === 'hf') { handleHfSubmit(f) }
+    });
+
+    document.addEventListener('input', e => {
+      if (e.target.matches('[data-input="ask-q"]')) { state.query = e.target.value; save('query', state.query) }
+      if (e.target.matches('[data-input="pa-q"]')) {
+        state.priorQ = e.target.value;
+        const box = $('#pa-results'); if (box) box.innerHTML = paResultsHTML();
+      }
+    });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeModal();
+      if (e.key === ' ' && e.target.closest('.ck-row')) { e.preventDefault(); e.target.closest('.ck-row').click() }
+    });
+
+    /* rotating hero placeholder (subtle, only on dashboard) */
+    let phI = 0;
+    setInterval(() => {
+      const inp = document.querySelector('[data-ph-rot]'); if (!inp) return;
+      const phs = JSON.parse(inp.dataset.phs || '[]'); if (!phs.length) return;
+      phI = (phI + 1) % phs.length; if (document.activeElement !== inp && !inp.value) inp.placeholder = phs[phI];
+    }, 3200);
+
+    document.documentElement.lang = state.lang;
+    window.addEventListener('hashchange', onRoute);
+    onRoute();
+  </script>
+</body>
+
+</html>
